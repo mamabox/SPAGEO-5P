@@ -1,0 +1,11 @@
+CHECKPT1*#1 Place-toi face à l’entrée de l'école. | De quel côté de l'école est le tourniquet rouge ?
+CHECKPT2*#2 Place-toi dos à la montagne. | Qu’est-ce qui est à ta gauche ? 
+CHECKPT3*#3 Place-toi face au parc. | Si tu entres dans le parc, de quel côté sera le banc ?
+CHECKPT4*#4 Fais demi-tour. Si tu t’assoies sur le banc, de quel côté sera le panneau STOP ?
+CHECKPT5*#5 Place-toi face à l’arrêt de bus. | Où est placée l’horloge par rapport à la maison à droite de l’arrêt de bus ?
+CHECKPT6*#6 Place-toi face à la porte passager de la voiture blanche. | Où est placée la voiture verte par rapport à la borne d’essence ?
+CHECKPT7*#7 Si tu t’assoies sur le banc, de quel côté sera le marchand de musique ? 
+CHECKPT8*#8 Fais à quart de tour à droite. | Place-toi face à la porte de la banque. | Qu’est-ce qui est placé à côté du lampadaire de droite.
+CHECKPT9*#9 De quel côté de la porte d’entrée sont placées les fleurs rouges ?
+CHECKPT10*#10 Où est placée la borne à incendie rouge par rapport à la route ?
+CHECKPT11*#11 De quelle couleur est la voiture au bout de la ruelle ?

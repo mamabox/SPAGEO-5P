@@ -1,0 +1,12 @@
+CHECKPT1*#1 C’est parti pour l’aventure ! 
+CHECKPT2*#2 Regarde le camion de pompier, que vois-tu au-dessus de la vitre du milieu du camion ? | Fais un quart de tour à gauche.
+CHECKPT3*#3 Place-toi face à l’hôtel. | Quelle est la couleurs des fleurs au-dessus, à droite de la porte d’entrée ? 
+CHECKPT4*#4 Place-toi face à l’entrée de la banque. | Quel est l’objet placé prêt du lampadaire à ta gauche ?
+CHECKPT5*#5 Place-toi face au banc devant la pharmacie. | Quelle est la couleur de l’affichette sur la vitre en haut à droite, derrière le banc ?
+CHECKPT6*#6 Fais un demi-tour sur toi-même. | De quel côté de la maison est placé le store rouge et blanc ?
+CHECKPT7*#7 Place-toi face à l’arrêt de bus. | Où est placé le livre par rapport au banc ? | Fais un quart de tour vers la droite.
+CHECKPT8*#8 En faisant un quart de tour à droite, approche-toi de la borne à incendie rouge.
+CHECKPT9*#9 Fais un demi-tour sur toi-même, que vois-tu ? | Combien de fenêtres sont face au parc sur le bâtiment de droite de l’hôpital ?
+CHECKPT10*#10 Sans t'avancer, que vois-tu au loin au bout de la rue ?
+CHECKPT11*#11 Où est placée la balançoire bleue par rapport à la porte d’entrée de l'école ? | Où sont placés les arbres par rapport au bâtiment ?
+CHECKPT12*#12 Bravo, tu as réussi tous les défis !

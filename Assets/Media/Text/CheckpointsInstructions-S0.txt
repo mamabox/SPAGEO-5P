@@ -1,0 +1,12 @@
+CHECKPT1*Prochain lieu de rendez-vous : | Entre la roue avant et la roue arrière du camion de pompier.
+CHECKPT2*Prochain lieu de rendez-vous : | Face à la porte de l’hôtel.
+CHECKPT3*Prochain lieu de rendez-vous : | Face à l’entrée de la banque.
+CHECKPT4*Suis la ligne fléchée verte. Valide à l’arrivée.
+CHECKPT5*Prochain lieu de rendez-vous : | Face à la 1ère pompe à essence devant la voiture blanche. 
+CHECKPT6*Suis la ligne fléchée bleue. Valide à l’arrivée.
+CHECKPT7*Prochain lieu de rendez-vous : | Face aux arbres devant la porte de  la bibliothèque.
+CHECKPT8*Prochain lieu de rendez-vous : | Face au parc à côté de la borne à incendie.
+CHECKPT9*Prochain lieu de rendez-vous : | Entre le parc et le bâtiment au store rouge et blanc.
+CHECKPT10*Prochain lieu de rendez-vous : | Face à l'école.
+CHECKPT11*Suis la ligne fléchée jaune. Valide à l’arrivée.
+CHECKPT12*#12 Valides pour sortir
