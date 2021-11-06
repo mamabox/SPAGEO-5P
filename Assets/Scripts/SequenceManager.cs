@@ -17,6 +17,7 @@ public class SequenceManager : MonoBehaviour
     private HotspotManager hotspotManager;
     private UIManager uIManager;
     public GameObject scenario1Props;
+    public LimiterManager limiterManager;
     //public GlobalControl.SessionData sessionData;
 
     //private int allowedAttempts;
@@ -41,6 +42,7 @@ public class SequenceManager : MonoBehaviour
     public List<string> scenario3TextFile;
     public List<string> scenario4TextFile;
     public List<string> scenario5TextFile;
+    public List<string> scenario6TextFile;
 
     // Scenario Data structures
     public Scenario1Data scenario1S0Data = new Scenario1Data();
@@ -50,6 +52,7 @@ public class SequenceManager : MonoBehaviour
     public ScenarioStdData scenario4Data = new ScenarioStdData();
     public ScenarioStdData scenario5Data = new ScenarioStdData();
     public ScenarioStdData activeScenario = new ScenarioStdData();  //currently selected scenario (for 2-5)
+    public Scenario6Data scenario6Data = new Scenario6Data();
 
     private void Awake()
     {
@@ -62,6 +65,7 @@ public class SequenceManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
         hotspotManager = FindObjectOfType<GameManager>().GetComponent<HotspotManager>();
         uIManager = FindObjectOfType<GameManager>().GetComponent<UIManager>();
+        limiterManager = FindObjectOfType<GameManager>().GetComponent<LimiterManager>();
 
         // Import data session from GlobalControl
         //selectedScenario = GlobalControl.instance.activeSequence;
@@ -72,12 +76,14 @@ public class SequenceManager : MonoBehaviour
         ImportAllTextFiles();   //Import text files containing
 
         //IMPORT SCENARIOS DATA FROM TEXT FILES
+        Debug.Log("Import Scenarios");
         scenario1S0Data = ImportScenario1Data(scenario1S0TextFile, hotspotManager.hotspotTextS0, 2);    //Scenario 1
         scenario1S6Data = ImportScenario1Data(scenario1S6TextFile, hotspotManager.hotspotTextS6, 2);    //Scenario 6
         scenario2Data = ImportScenarioStdData(scenario2TextFile, 2);    //Scenario 2
         scenario3Data = ImportScenarioStdData(scenario3TextFile, 2);    //Scenario 3
         scenario4Data = ImportScenarioStdData(scenario4TextFile, 2);    //Scenario 4
         scenario5Data = ImportScenarioStdData(scenario5TextFile, 2);    // Scenario 5
+        scenario6Data = ImportScenario6Data(scenario6TextFile, 2);    // Scenario 6
     }
 
     void Start()
@@ -112,7 +118,11 @@ public class SequenceManager : MonoBehaviour
         else if (gameManager.sessionData.selectedScenario == 5)
         {
             Scenario5();
-        }            
+        }
+        else if (gameManager.sessionData.selectedScenario == 6)
+        {
+            Scenario6();
+        }
 
         //2. SETUP THE PLAYER
         playerController.InitialisePlayer();
@@ -265,6 +275,20 @@ public class SequenceManager : MonoBehaviour
         }
     }
 
+    //SCENARIO 6 - GENERATE BARRIERS
+    private void Scenario6()
+    {
+        gameManager.sessionData.routeStart = routeManager.SplitCoordinates("5_5W"); //Manual start
+        gameManager.sessionData.selectedRouteCoord = new List<string>(); //Draw nothing
+
+
+        limiterManager.allLimiters = new List<string>(scenario6Data.limiters);
+        Debug.Log("Scenario 6 limiters " + string.Join("+", scenario6Data.limiters));
+        limiterManager.GenerateLimiters(scenario6Data.limiters);
+
+
+    }
+
     //PULLS DATA FROM LIST<STRING> AND STORES IT IN STRUCTURE (SCENARIO 1)
     private Scenario1Data ImportScenario1Data(List<string> scenarioTextFile, List<string> hotspotTextFile, int routesStartAtLine)
     {
@@ -293,6 +317,24 @@ public class SequenceManager : MonoBehaviour
         }
 
         return scenarioData;
+    }
+
+    private Scenario6Data ImportScenario6Data(List<string> textFile, int limitatorsStartAtLine)
+    {
+        Scenario6Data scenarioData = new Scenario6Data();
+        scenarioData.limiters = new List<string>(); //List that will hold the limitator coordinates
+
+        scenarioData.maxAttempts = int.Parse(textFile.ElementAt(0)); // The first element holds the number of attempts
+        scenarioData.maxValidations = int.Parse(textFile.ElementAt(1)); //The second element hols the number of validations
+        scenarioData.limitatorsCount = textFile.Count - limitatorsStartAtLine; //Calculates the number of limitators configurations
+        for (int i = limitatorsStartAtLine; i < textFile.Count; i++)
+        {
+            scenarioData.limiters.Add(textFile.ElementAt(i));
+        }
+        Debug.Log("Inside ImportScenario6Data, " + scenarioData.limitatorsCount + " limitator strings imported");
+
+        return scenarioData;
+
     }
 
     //PULLS DATA FROM LIST<STRING> AND STORES IT IN STRUCTURE (SCENARIOS 2 TO 5)
@@ -339,7 +381,7 @@ public class SequenceManager : MonoBehaviour
 //        Debug.Log("Attempts limited: " + attemptsLimited + ". Validations limited: " + validationsLimited);
     }
 
-    //IMPORT TEXT FROM .TXT FILE PER LINE AND REMOVES COMMENTS BEFORE '-' SEPARATOR
+    //IMPORT TEXT FROM .TXT FILE PER LINE AND REMOVES COMMENTS BEFORE '*' SEPARATOR
     private List<string> ImportText(string fileName)
     {
         List<string> txtImport = new List<string>(System.IO.File.ReadAllLines(importPath + fileName));  //Import the text from the fileName
@@ -375,6 +417,7 @@ public class SequenceManager : MonoBehaviour
         scenario3TextFile = ImportText("Scenario3.txt");
         scenario4TextFile = ImportText("Scenario4.txt");
         scenario5TextFile = ImportText("Scenario5.txt");
+        scenario6TextFile = ImportText("Scenario6.txt");
     }
 
     // HOLDS DATA FOR SCENARIO 1
@@ -396,5 +439,14 @@ public class SequenceManager : MonoBehaviour
         public int maxValidations;
         public int routesCount;
         public List<string> routes;
+    }
+
+    // HOLDS DATA FOR SCENARIOS 2 to 5
+    public struct Scenario6Data
+    {
+        public int maxAttempts;
+        public int maxValidations;
+        public int limitatorsCount;
+        public List<string> limiters;
     }
 }

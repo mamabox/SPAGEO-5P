@@ -5,53 +5,70 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/**
+ * Filename.cs
+ * 
+ * Handles the menu selection
+ * Dropdown elements are cleared and updated depending on selection
+ * 
+ **/
 
 public class MainMenu : MonoBehaviour
 {
     public TMP_Dropdown routeDropDown;
     public TextMeshProUGUI sessionSummary;
     public GameObject sendReceiveToggleGroup;
-    
+
     static int menuScenarioSelection;
     static int menuRouteSelection;
     private List<int> allScenarioRouteCounts; //TODO: Initialise
 
+    // SET DEFAULT VALUES FOR MENU SELECTION
     private void Awake()
     {
-        sendReceiveToggleGroup.SetActive(false);
-        GlobalControl.instance.sessionData.isSender = true;
-        menuScenarioSelection = 1;
-        menuRouteSelection = 0;
-
+        InitialiseMenuValues();
     }
 
+    // Update is called once per frame
     private void Update()
     {
-        if (GlobalControl.instance.sessionData.isGroupSession)
-        {
-            sessionSummary.text = "Groupe: " + GlobalControl.instance.sessionData.groupID + " - Élève(s): "+ string.Join(",", GlobalControl.instance.sessionData.studentIDs);
-        }
-        else
-        {
-            sessionSummary.text = "Élève(s): " + string.Join(",", GlobalControl.instance.sessionData.studentIDs);
-        }
-        
+        UIUpdate();
     }
 
-
+    // Start is called before the first frame update
     private void Start()
     {
         //Debug.Log("Sequence selected: " + menuSequenceSelection);
         //Debug.Log("Route selected: " + (menuRouteSelection + 1));
 
-
         GlobalControl.instance.sessionData.selectedScenario = menuScenarioSelection; //Set as default if nothing is selected
         GlobalControl.instance.sessionData.selectedRoute = menuRouteSelection;
 
-        PopulateDropdownRoutes(routeDropDown, 1, 0);
-    
+        PopulateDropdownRoutes(routeDropDown, 1, 0);    //Populate the route selection dropdown for the default scenario (#1)
     }
 
+    private void InitialiseMenuValues()
+    {
+        sendReceiveToggleGroup.SetActive(false);
+        GlobalControl.instance.sessionData.isSender = true;
+        menuScenarioSelection = 1;
+        menuRouteSelection = 0;
+    }
+
+    // Update UI with group or student ID information
+    private void UIUpdate()
+    {
+        if (GlobalControl.instance.sessionData.isGroupSession)
+        {
+            sessionSummary.text = "Groupe: " + GlobalControl.instance.sessionData.groupID + " - Élève(s): " + string.Join(",", GlobalControl.instance.sessionData.studentIDs);
+        }
+        else
+        {
+            sessionSummary.text = "Élève(s): " + string.Join(",", GlobalControl.instance.sessionData.studentIDs);
+        }
+    }
+
+    // Populate the route selection dropdown for routeCounte # of route for scenario # scenarioID 
     private void PopulateDropdownRoutes (TMP_Dropdown dropdown, int scenarioID, int routeCount)
     {
         List<string> routesToAdd = new List<string>();
@@ -61,16 +78,21 @@ public class MainMenu : MonoBehaviour
             routesToAdd = new List<string>{ "Séquence 0", "Séquence 6"};
         }
 
-        if (scenarioID == 5)
+        else if (scenarioID == 5)
         {
             routesToAdd.Add("Pas de route");
         }
+        else if (scenarioID == 6)
+        {
+            routesToAdd = new List<string> { "Barrières test" };
+        }
+        
         for (int i = 0; i < routeCount; i++)
         {
             routesToAdd.Add("Route Sc" + scenarioID + "-" + (i + 1));
         }
 
-        routeDropDown.AddOptions(routesToAdd);
+        routeDropDown.AddOptions(routesToAdd);  //Adds the options to the dropdown
 
     }
 
@@ -87,11 +109,12 @@ public class MainMenu : MonoBehaviour
             GlobalControl.instance.sessionData.isSender = false;
         }
     }
-
+    
+    // Called from Main Menu > Scenario dropdown on value changed
     public void HandleScenarioSelection (int selection)
     {
-        routeDropDown.ClearOptions();
-        senderReceiverVisibility(selection);
+        routeDropDown.ClearOptions();   // Clear the options of the dropdown menu
+        senderReceiverVisibility(selection);    // Handles sender/receiver toggle button visibility
 
         if (selection == 0)
         {
@@ -102,7 +125,7 @@ public class MainMenu : MonoBehaviour
         else if (selection == 1)
         {
             menuScenarioSelection = 2;
-            PopulateDropdownRoutes(routeDropDown, 2, 2);
+            PopulateDropdownRoutes(routeDropDown, 2, 4);
         }
         else if (selection == 2)
         {
@@ -119,10 +142,15 @@ public class MainMenu : MonoBehaviour
             menuScenarioSelection = 5;
             PopulateDropdownRoutes(routeDropDown, 5, 8);
         }
+        else if (selection == 5)
+        {
+            menuScenarioSelection = 6;
+            PopulateDropdownRoutes(routeDropDown, 6, 0);    // Trigger scenario 6 with no added routes
+        }
 
         //Debug.Log("Sequence selected: " + menuScenarioSelection);
         //Debug.Log("Route selected: " + (menuRouteSelection));
-        GlobalControl.instance.sessionData.selectedScenario = menuScenarioSelection;
+        GlobalControl.instance.sessionData.selectedScenario = menuScenarioSelection;    //TODO: change to selection + 1
     }
 
     public void RouteInput(int val)
@@ -136,6 +164,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("5P");
     }
 
+    // Hide or show the sender/receiver toggle buttons for the specific scenarios
     private void senderReceiverVisibility(int selection)
     {
         if (selection == 1)

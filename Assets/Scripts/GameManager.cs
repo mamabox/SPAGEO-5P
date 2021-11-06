@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public GlobalControl.SessionData sessionData;
     private SaveSessionData saveSessionData;
     private EventSystem eventSystem;
+    private LimiterManager limiterMansger;
     //public Canvas canvas;
 
     public int blockSize = 35; //define the city's block size in meters
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
         uiManager = GetComponent<UIManager>();
         checkpointManager = GetComponent<CheckpointManager>();
         saveSessionData = GetComponent<SaveSessionData>();
+        limiterMansger = GetComponent<LimiterManager>();
 
         overideOnIntersectionExit = false;
 
