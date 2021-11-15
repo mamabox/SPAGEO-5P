@@ -18,6 +18,7 @@ public class Limiter : MonoBehaviour
     //public float[] coordinates;  // Intersection's coordinate in [x,y] format
     public int cardinalDirection;
     public int ID;
+    //public float rotation;
 
     // Start is called before the first frame update
     void Awake()

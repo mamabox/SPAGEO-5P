@@ -35,7 +35,7 @@ public class LimiterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateLimiters(new List<string> { "5_5N", "5_4S", "5_3E","5_5W"});
+        //GenerateLimiters(new List<string> { "5_5N", "5_4S", "5_3E","5_5W"});
     }
 
     public void GenerateLimiters(List<string> limiters)
@@ -53,6 +53,10 @@ public class LimiterManager : MonoBehaviour
             var newCheckpoint = Instantiate(limiterPrefab, new Vector3(float.Parse(coordArray[0]) * gameManager.blockSize, 0.02f, float.Parse(coordArray[1]) * gameManager.blockSize) + transformOffset(coordDir), Quaternion.Euler(0, rotationOffset(coordDir), 0));
 
             //Quaternion.Euler(0, rotationOffset(coordDir, 0); // Sets camera to player's rotation + offset
+
+            newCheckpoint.GetComponent<Limiter>().coordString = limiters[i];  //store the coordinates as a string in the instance
+            newCheckpoint.GetComponent<Limiter>().ID = i + 1;    //stores the checkpoint ID(int) in the instance
+            //newCheckpoint.GetComponent<Limiter>().rotation = newCheckpoint.transform.rotation.y;
         }
     }
 
@@ -70,10 +74,10 @@ public class LimiterManager : MonoBehaviour
                 transformOffset = new Vector3(0, 0, -5);
                 break;
             case 'W':
-                transformOffset = new Vector3(5, 0, 0);
+                transformOffset = new Vector3(-5, 0, 0);
                 break;
             case 'E':
-                transformOffset = new Vector3(-5, 0, 0);
+                transformOffset = new Vector3(5, 0, 0);
                 break;
 
         }
@@ -88,7 +92,7 @@ public class LimiterManager : MonoBehaviour
         switch (dir)
         {
             case 'N':
-                rotationOffset = 0;
+                rotationOffset = 180;
                 break;
             case 'S':
                 rotationOffset = 0;

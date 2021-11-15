@@ -278,13 +278,21 @@ public class SequenceManager : MonoBehaviour
     //SCENARIO 6 - GENERATE BARRIERS
     private void Scenario6()
     {
-        gameManager.sessionData.routeStart = routeManager.SplitCoordinates("5_5W"); //Manual start
-        gameManager.sessionData.selectedRouteCoord = new List<string>(); //Draw nothing
+        routeManager.validationEnabled = false; //No validation possible
 
+        //gameManager.sessionData.routeStart = routeManager.SplitCoordinates("5_5W"); //Manual start
+        //gameManager.sessionData.routeStart = routeManager.SplitCoordinates(scenario6Data.limiters.ElementAt(0)); //Start point is the first item in the selecte limiters list
+
+        gameManager.sessionData.selectedRouteCoord = new List<string>(); //There is no route
+
+        List<string> thisLimiter = new List<string>(scenario6Data.limiters.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList()); //Creates a new list frmo teh selected limiters list
+        gameManager.sessionData.routeStart = routeManager.getRouteStart(thisLimiter);
 
         limiterManager.allLimiters = new List<string>(scenario6Data.limiters);
         Debug.Log("Scenario 6 limiters " + string.Join("+", scenario6Data.limiters));
-        limiterManager.GenerateLimiters(scenario6Data.limiters);
+        //limiterManager.GenerateLimiters(scenario6Data.limiters);
+        thisLimiter.RemoveAt(0);
+        limiterManager.GenerateLimiters(thisLimiter);
 
 
     }
@@ -327,7 +335,7 @@ public class SequenceManager : MonoBehaviour
         scenarioData.maxAttempts = int.Parse(textFile.ElementAt(0)); // The first element holds the number of attempts
         scenarioData.maxValidations = int.Parse(textFile.ElementAt(1)); //The second element hols the number of validations
         scenarioData.limitatorsCount = textFile.Count - limitatorsStartAtLine; //Calculates the number of limitators configurations
-        for (int i = limitatorsStartAtLine; i < textFile.Count; i++)
+        for (int i = limitatorsStartAtLine; i < textFile.Count; i++) // List of all limiters
         {
             scenarioData.limiters.Add(textFile.ElementAt(i));
         }
@@ -412,7 +420,7 @@ public class SequenceManager : MonoBehaviour
         checkpointManager.checkpointsInstructionsS6 = ImportText("Checkpointsinstructions-S6.txt");
         hotspotManager.hotspotTextS6 = ImportText("Hotspots-S6.txt");
 
-        //Scenarion 2 - 5
+        //Scenarion 2 - 6
         scenario2TextFile = ImportText("Scenario2.txt");
         scenario3TextFile = ImportText("Scenario3.txt");
         scenario4TextFile = ImportText("Scenario4.txt");
