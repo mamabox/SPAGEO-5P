@@ -157,6 +157,11 @@ public class MainMenu : MonoBehaviour
             menuScenarioSelection = 6;
             PopulateDropdownRoutes(routeDropDown, 6, 4);    // Trigger scenario 6 with no added routes
         }
+        else if (selection == 6)
+        {
+            menuScenarioSelection = 7;
+            PopulateDropdownRoutes(routeDropDown, 7, 8);    // Trigger scenario 6 with no added routes
+        }
 
         //Debug.Log("Sequence selected: " + menuScenarioSelection);
         //Debug.Log("Route selected: " + (menuRouteSelection));

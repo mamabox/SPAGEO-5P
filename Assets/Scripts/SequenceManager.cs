@@ -43,6 +43,7 @@ public class SequenceManager : MonoBehaviour
     public List<string> scenario4TextFile;
     public List<string> scenario5TextFile;
     public List<string> scenario6TextFile;
+    public List<string> scenario7TextFile;
 
     // Scenario Data structures
     public Scenario1Data scenario1S0Data = new Scenario1Data();
@@ -53,6 +54,7 @@ public class SequenceManager : MonoBehaviour
     public ScenarioStdData scenario5Data = new ScenarioStdData();
     public ScenarioStdData activeScenario = new ScenarioStdData();  //currently selected scenario (for 2-5)
     public Scenario6Data scenario6Data = new Scenario6Data();
+    public ScenarioStdData scenario7Data = new ScenarioStdData();
 
     private void Awake()
     {
@@ -84,6 +86,7 @@ public class SequenceManager : MonoBehaviour
         scenario4Data = ImportScenarioStdData(scenario4TextFile, 2);    //Scenario 4
         scenario5Data = ImportScenarioStdData(scenario5TextFile, 2);    // Scenario 5
         scenario6Data = ImportScenario6Data(scenario6TextFile, 2);    // Scenario 6
+        scenario7Data = ImportScenarioStdData(scenario7TextFile, 2);    // Scenario 7
     }
 
     void Start()
@@ -122,6 +125,10 @@ public class SequenceManager : MonoBehaviour
         else if (gameManager.sessionData.selectedScenario == 6)
         {
             Scenario6();
+        }
+        else if (gameManager.sessionData.selectedScenario == 7)
+        {
+            Scenario7();
         }
 
         //2. SETUP THE PLAYER
@@ -220,7 +227,7 @@ public class SequenceManager : MonoBehaviour
     }
 
 
-    //SCENARIO 4 - RETRACE AND VALIDATE A ROUTE PREVIOUSLY TAKEN
+    //SCENARIO 4 - RETRACE AND VALIDATE A ROUTE PREVIOUSLY TAKEN + DISPLAY LINES
     private void Scenario4()
     {
         activeScenario = scenario4Data; //Sets as active scenario
@@ -247,6 +254,33 @@ public class SequenceManager : MonoBehaviour
             List<string> lineToDraw = new List<string>(gameManager.sessionData.selectedRouteCoord); //Temportarily displays route (DEUB)
             lineToDraw.RemoveAt(0); //Remove the start coordiante
             routeManager.SpawnLine(lineToDraw, 0);
+        }
+    }
+
+    //SCENARIO 7 - RETRACE AND VALIDATE A ROUTE PREVIOUSLY TAKEN
+    private void Scenario7()
+    {
+        activeScenario = scenario7Data; //Sets as active scenario
+        gameManager.sessionData.selectedRouteCoord = scenario4Data.routes.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList(); //Sets the route selected in menu as the session's route
+        gameManager.sessionData.routeStart = routeManager.getRouteStart(gameManager.sessionData.selectedRouteCoord);   //sets at what position the player should start
+        gameManager.sessionData.selectedRouteDir = intersectionManager.ConvertRouteToDirection(gameManager.sessionData.selectedRouteCoord);
+        Debug.Log(string.Join(",", gameManager.sessionData.selectedRouteDir));
+
+        SetAttemptsValidationLimits();
+        //gameManager.attemptCount = 0;
+
+        if (!gameManager.sessionData.sessionPaused)
+        {
+            routeManager.validationEnabled = true;
+            gameManager.attemptsAllowed = true;
+        }
+
+        else if (gameManager.sessionData.sessionPaused)   //if player has already done the validation by image
+        {
+            //gameManager.validationCount++;
+            routeManager.validationEnabled = false;
+            gameManager.attemptsAllowed = false;
+            //attemptsLimited = false;
         }
     }
 
@@ -426,6 +460,7 @@ public class SequenceManager : MonoBehaviour
         scenario4TextFile = ImportText("Scenario4.txt");
         scenario5TextFile = ImportText("Scenario5.txt");
         scenario6TextFile = ImportText("Scenario6.txt");
+        scenario7TextFile = ImportText("Scenario7.txt");
     }
 
     // HOLDS DATA FOR SCENARIO 1

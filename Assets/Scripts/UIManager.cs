@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
         // Start is called before the first frame update
         void Start()
     {
-        shorcutsText.text = "(START) Commencer / Terminer - (D) Nouvelle Tentative - (C) Valider - (A) Enregistrer trajet";
+        shorcutsText.text = "(START/S) Demarrer / Terminer - (D/X) Nouvelle Tentative - (C/ESPACE) Valider - (A/C) Enregistrer trajet - (B/ENTER) Fermer Fenetre - (M) Menu Debug";
     }
 
     // Update is called once per frame

@@ -772,6 +772,7 @@ MonoBehaviour:
   scenario4TextFile: []
   scenario5TextFile: []
   scenario6TextFile: []
+  scenario7TextFile: []
 --- !u!114 &96087582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3492,8 +3493,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (S) Demarrer / Terminer - (X) Nouvelle Tentative - (ESPACE) Valider - (C)
-    Enregistrer trajet
+  m_text: (START/S) Demarrer / Terminer - (D/X) Nouvelle Tentative - (C/ESPACE) Valider
+    - (A/C) Enregistrer trajet - (B/ENTER) Fermer Fenetre - (M) Menu Debug
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -3556,7 +3557,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -349.68335, w: 0}
+  m_margin: {x: 0, y: 0, z: -835.6221, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

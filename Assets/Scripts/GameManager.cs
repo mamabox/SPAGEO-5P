@@ -458,7 +458,7 @@ public class GameManager : MonoBehaviour
                 uiManager.OpenDialogBox("VALIDATION PAR IMAGES");
             }
             //Scenario 4
-            else if (sessionData.selectedScenario == 4)
+            else if (sessionData.selectedScenario == 4 || sessionData.selectedScenario == 7)
             {
                 routeManager.ValidateRoute(intersectionManager.sessionRoute);
                 uiManager.routeValidationText.text = ("Valid = " + routeManager.validationInfo.isValid + " - errorat #: " + routeManager.validationInfo.errorAt + " - endReached= " + routeManager.validationInfo.endReached + " - length: " + routeManager.validationInfo.routeLength); //UI Display only
