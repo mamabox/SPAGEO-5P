@@ -81,16 +81,26 @@ public class MainMenu : MonoBehaviour
         else if (scenarioID == 5)
         {
             routesToAdd.Add("Pas de route");
+            for (int i = 0; i < routeCount; i++)
+            {
+                routesToAdd.Add("Route" + scenarioID + "-" + (i + 1));
+            }
         }
         else if (scenarioID == 6)
         {
-            routesToAdd = new List<string> { "Barrières test" };
+            for (int i = 0; i < routeCount; i++)
+            {
+                routesToAdd.Add("Barrière-" + (i + 1));
+            }
         }
-        
-        for (int i = 0; i < routeCount; i++)
+        else // Scenarios 2 - 5
         {
-            routesToAdd.Add("Route Sc" + scenarioID + "-" + (i + 1));
-        }
+            for (int i = 0; i < routeCount; i++)
+            {
+                routesToAdd.Add("Route" + scenarioID + "-" + (i + 1));
+            }
+        }    
+        
 
         routeDropDown.AddOptions(routesToAdd);  //Adds the options to the dropdown
 
@@ -145,7 +155,7 @@ public class MainMenu : MonoBehaviour
         else if (selection == 5)
         {
             menuScenarioSelection = 6;
-            PopulateDropdownRoutes(routeDropDown, 6, 0);    // Trigger scenario 6 with no added routes
+            PopulateDropdownRoutes(routeDropDown, 6, 4);    // Trigger scenario 6 with no added routes
         }
 
         //Debug.Log("Sequence selected: " + menuScenarioSelection);
