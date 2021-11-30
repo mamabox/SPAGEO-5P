@@ -261,7 +261,7 @@ public class SequenceManager : MonoBehaviour
     private void Scenario7()
     {
         activeScenario = scenario7Data; //Sets as active scenario
-        gameManager.sessionData.selectedRouteCoord = scenario4Data.routes.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList(); //Sets the route selected in menu as the session's route
+        gameManager.sessionData.selectedRouteCoord = scenario7Data.routes.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList(); //Sets the route selected in menu as the session's route
         gameManager.sessionData.routeStart = routeManager.getRouteStart(gameManager.sessionData.selectedRouteCoord);   //sets at what position the player should start
         gameManager.sessionData.selectedRouteDir = intersectionManager.ConvertRouteToDirection(gameManager.sessionData.selectedRouteCoord);
         Debug.Log(string.Join(",", gameManager.sessionData.selectedRouteDir));
