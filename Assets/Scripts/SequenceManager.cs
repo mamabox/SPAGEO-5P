@@ -130,6 +130,14 @@ public class SequenceManager : MonoBehaviour
         {
             Scenario7();
         }
+        else if (gameManager.sessionData.selectedScenario == 8)
+        {
+            //Scenario8();
+        }
+        else if (gameManager.sessionData.selectedScenario == 9)
+        {
+            Scenario9();
+        }
 
         //2. SETUP THE PLAYER
         playerController.InitialisePlayer();
@@ -327,6 +335,18 @@ public class SequenceManager : MonoBehaviour
         //limiterManager.GenerateLimiters(scenario6Data.limiters);
         thisLimiter.RemoveAt(0);
         limiterManager.GenerateLimiters(thisLimiter);
+    }
+
+    //SCENARIO 1 - HOTSPOTS + VALIDATION BY CHECKPOINTS
+    private void Scenario9()
+    {
+        scenario1Props.SetActive(true); //Make props visible
+        routeManager.validationEnabled = true; //Validation is possible
+        attemptsLimited = false;
+        validationsLimited = false;
+        gameManager.attemptsAllowed = false;
+        gameManager.sessionData.selectedRouteCoord = new List<string>();
+
 
 
     }

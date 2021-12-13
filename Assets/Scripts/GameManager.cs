@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
     public string sessionSummaryText;      //Summary of game session
     public bool overideOnIntersectionExit; //Using when resetting route manually
 
+    public ScenariosData scenariosData;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -88,6 +90,7 @@ public class GameManager : MonoBehaviour
         overideOnIntersectionExit = false;
 
         sessionData = GlobalControl.instance.sessionData;          // Import data session from GlobalControl
+        scenariosData = new ScenariosData();
         Debug.Log("GAME MANAGER (pause): " + sessionData.sessionPaused);
 
         SetPaths();                     // Set paths for importing and exporting data

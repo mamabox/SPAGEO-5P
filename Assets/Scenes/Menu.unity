@@ -6559,6 +6559,10 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: 7 - Utilisation de message (sans affichage)
       m_Image: {fileID: 0}
+    - m_Text: 8 - Recherche d'un object
+      m_Image: {fileID: 0}
+    - m_Text: "9 - T\xE2che de pointage"
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

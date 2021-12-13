@@ -551,6 +551,7 @@ GameObject:
   - component: {fileID: 96087582}
   - component: {fileID: 96087583}
   - component: {fileID: 96087584}
+  - component: {fileID: 96087585}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -591,6 +592,31 @@ MonoBehaviour:
   attemptDistance: 0
   sessionSummaryText: 
   overideOnIntersectionExit: 0
+  scenariosData:
+    scenariosNb: 0
+    sc1Data:
+      scenarioID: 0
+      description: 
+      dropdownMenuText: 
+    stdScData: []
+    sc6Data:
+      scenarioID: 0
+      description: 
+      dropdownMenuText: 
+      attempsNb: 0
+      validationNb: 0
+      barriers: []
+    sc8Data:
+      scenarioID: 0
+      description: 
+      dropdownMenuText: 
+    sc9Data:
+      scenarioID: 0
+      description: 
+      dropdownMenuText: 
+      instructions: []
+      propObjs: []
+      trials: []
 --- !u!4 &96087575
 Transform:
   m_ObjectHideFlags: 0
@@ -820,6 +846,18 @@ MonoBehaviour:
   limiterPrefab: {fileID: 5792823829888893852, guid: eef0d4961e10145ad83154c49212cbb0,
     type: 3}
   allLimiters: []
+--- !u!114 &96087585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96087573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b6d5e4c6b3041c280d8199a17a00b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &111019935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4791,6 +4829,51 @@ MonoBehaviour:
   returnToMenu: 0
   validateScene: 0
   nextAction: 
+--- !u!1 &1016178826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1016178828}
+  - component: {fileID: 1016178827}
+  m_Layer: 0
+  m_Name: ScenariosManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1016178827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016178826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6983f1cd3cbfa4cf5bccbc7e833a728f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allObjects: []
+  objNamesPronouns: []
+--- !u!4 &1016178828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016178826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 42.5, y: 0.5, z: 92.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1018226988
 GameObject:
   m_ObjectHideFlags: 0
