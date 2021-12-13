@@ -209,6 +209,8 @@ public class IntersectionManager : MonoBehaviour
             }
             player.transform.eulerAngles = new Vector3(0, playerController.currentRotation.y, 0);
         }
+        else
+            Debug.Log("Direction is NOT valid");
     }
 
     

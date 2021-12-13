@@ -128,7 +128,7 @@
             "trialEnd": ". Et appuie sur le boutton de validation.",
             "taskEnd": "Bien joué, tu as terminé. Click OK pour revenir au menu principal"
         },
-        "propObj": [
+        "propObjs": [
             {
                 "name": "drapeau",
                 "pronoun": "le"
@@ -139,6 +139,10 @@
             },
             {
                 "name": "camion des éboueurs",
+                "pronoun": "le"
+            },
+                        {
+                "name": "chevalet",
                 "pronoun": "le"
             },
             {

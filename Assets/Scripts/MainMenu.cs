@@ -93,6 +93,10 @@ public class MainMenu : MonoBehaviour
                 routesToAdd.Add("Barrière-" + (i + 1));
             }
         }
+        else if (scenarioID == 8 || scenarioID == 9)
+        {
+            routesToAdd.Add("WIP");
+        }
         else // Scenarios 2 - 5
         {
             for (int i = 0; i < routeCount; i++)
@@ -161,6 +165,16 @@ public class MainMenu : MonoBehaviour
         {
             menuScenarioSelection = 7;
             PopulateDropdownRoutes(routeDropDown, 7, 8);    // Trigger scenario 6 with no added routes
+        }
+        else if (selection == 7)
+        {
+            menuScenarioSelection = 8;
+            PopulateDropdownRoutes(routeDropDown, 8, 0);    // Trigger scenario 6 with no added routes
+        }
+        else if (selection == 8)
+        {
+            menuScenarioSelection = 9;
+            PopulateDropdownRoutes(routeDropDown, 9, 0);    // Trigger scenario 6 with no added routes
         }
 
         //Debug.Log("Sequence selected: " + menuScenarioSelection);

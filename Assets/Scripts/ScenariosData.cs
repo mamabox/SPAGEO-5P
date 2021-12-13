@@ -62,10 +62,10 @@ public class Sc9Data
     public int scenarioID;
     public string description;
     public string dropdownMenuText;
-    public List<Instruction> instructions = new List<Instruction>();
+    public List<Instruction> instructions;
     public List<PropObj> propObjs;
     //public List<string> objectsTemp;
-    public List<Trial> trials = new List<Trial>();
+    public List<Trial> trials;
 }
 
 [System.Serializable]

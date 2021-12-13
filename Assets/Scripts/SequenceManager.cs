@@ -337,7 +337,7 @@ public class SequenceManager : MonoBehaviour
         limiterManager.GenerateLimiters(thisLimiter);
     }
 
-    //SCENARIO 1 - HOTSPOTS + VALIDATION BY CHECKPOINTS
+    //SCENARIO 9 - TACHE DE POINTAGE
     private void Scenario9()
     {
         scenario1Props.SetActive(true); //Make props visible
@@ -346,6 +346,7 @@ public class SequenceManager : MonoBehaviour
         validationsLimited = false;
         gameManager.attemptsAllowed = false;
         gameManager.sessionData.selectedRouteCoord = new List<string>();
+        gameManager.sessionData.routeStart = new List<string> { gameManager.scenariosData.sc9Data.trials[0].position, "" }; //forcing cardinal direciton 
 
 
 
