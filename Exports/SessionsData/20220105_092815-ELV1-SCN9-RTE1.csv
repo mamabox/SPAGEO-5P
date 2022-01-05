@@ -1,0 +1,15 @@
+sessionTime,gameIsPause,sessionDistance,validationCount,attemptCount,attemptTime,attemptDistance,isGroupSession,groupID,studentIDs,scenario,selectedRoute,isSender,routeStart,selectedRouteCoord,posX,posZ,rotation,time,scene,routeIsValid,routeEndReached,routeErrorAt,routeLength,routeCoord,isOnCheckpoint,lastCheckpoint,isOnHotspot,lastHotspot
+00:00,False,0.00,0,1,00:00,0.00,False,,1,9,1,True,5.5_6,,192.50,210.00,314.98,17:07,5P,False,False,0,0,,False,0,False,0
+00:01,False,0.00,0,1,00:01,0.00,False,,1,9,1,True,5.5_6,,192.50,210.00,314.98,17:08,5P,False,False,0,0,,False,0,False,0
+00:02,False,0.72,0,1,00:02,0.72,False,,1,9,1,True,5.5_6,,191.99,210.51,314.98,17:09,5P,False,False,0,0,,False,0,False,0
+00:03,False,1.83,0,1,00:03,1.83,False,,1,9,1,True,5.5_6,,190.91,210.70,278.98,17:10,5P,False,False,0,0,,False,0,False,0
+00:03,False,5.79,0,1,00:03,5.79,False,,1,9,1,True,5.5_6,,186.75,211.00,262.34,17:11,5P,False,False,0,0,,False,0,False,0
+00:04,False,11.79,0,1,00:04,11.79,False,,1,9,1,True,5.5_6,,180.84,211.07,291.69,17:12,5P,False,False,0,1,5_6,False,0,False,0
+00:06,False,16.51,0,1,00:06,16.51,False,,1,9,1,True,5.5_6,,177.46,213.90,338.33,17:13,5P,False,False,0,1,5_6,False,0,False,0
+00:07,False,19.74,0,1,00:07,19.74,False,,1,9,1,True,5.5_6,,178.79,210.96,300.86,17:14,5P,False,False,0,1,5_6,False,0,False,0
+00:08,False,19.74,0,1,00:08,19.74,False,,1,9,1,True,5.5_6,,178.79,210.96,250.86,17:15,5P,False,False,0,1,5_6,False,0,False,0
+00:09,False,19.74,0,1,00:09,19.74,False,,1,9,1,True,5.5_6,,178.79,210.96,238.86,17:16,5P,False,False,0,1,5_6,False,0,False,0
+00:09,False,19.74,0,1,00:09,19.74,False,,1,9,1,True,5.5_6,,178.79,210.96,238.86,17:17,5P,False,False,0,1,5_6,False,0,False,0
+00:10,False,19.74,0,1,00:10,19.74,False,,1,9,1,True,5.5_6,,178.79,210.96,238.86,17:18,5P,False,False,0,1,5_6,False,0,False,0
+00:12,False,19.74,0,1,00:12,19.74,False,,1,9,1,True,5.5_6,,178.79,210.96,238.86,17:19,5P,False,False,0,1,5_6,False,0,False,0
+00:13,False,19.74,0,1,00:13,19.74,False,,1,9,1,True,5.5_6,,178.79,210.96,238.86,17:20,5P,Fal

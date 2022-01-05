@@ -1,0 +1,16 @@
+sessionTime,gameIsPause,sessionDistance,validationCount,attemptCount,attemptTime,attemptDistance,isGroupSession,groupID,studentIDs,scenario,selectedRoute,isSender,routeStart,selectedRouteCoord,posX,posZ,rotation,time,scene,routeIsValid,routeEndReached,routeErrorAt,routeLength,routeCoord,isOnCheckpoint,lastCheckpoint,isOnHotspot,lastHotspot
+00:00,False,0.00,0,1,00:00,0.00,False,,1,9,1,True,5_6,,175.00,210.00,53.08,00:24,5P,False,False,0,1,5_6,False,0,False,0
+00:01,False,0.00,0,1,00:01,0.00,False,,1,9,1,True,5_6,,175.00,210.00,77.08,00:25,5P,False,False,0,1,5_6,False,0,False,0
+00:02,False,0.00,0,1,00:02,0.00,False,,1,9,1,True,5_6,,175.00,210.00,58.08,00:26,5P,False,False,0,1,5_6,False,0,False,0
+00:03,False,0.00,0,1,00:03,0.00,False,,1,9,1,True,5_6,,175.00,210.00,8.08,00:27,5P,False,False,0,1,5_6,False,0,False,0
+00:04,False,0.00,0,1,00:04,0.00,False,,1,9,1,True,5_6,,175.00,210.00,331.08,00:28,5P,False,False,0,1,5_6,False,0,False,0
+00:04,False,0.00,0,1,00:04,0.00,False,,1,9,1,True,5_6,,175.00,210.00,280.08,00:29,5P,False,False,0,1,5_6,False,0,False,0
+00:06,False,0.00,0,1,00:06,0.00,False,,1,9,1,True,5_6,,175.00,210.00,242.08,00:30,5P,False,False,0,1,5_6,False,0,False,0
+00:07,False,0.00,0,1,00:07,0.00,False,,1,9,1,True,5_6,,175.00,210.00,287.08,00:31,5P,False,False,0,1,5_6,False,0,False,0
+00:08,False,0.00,0,1,00:08,0.00,False,,1,9,1,True,5_6,,175.00,210.00,337.08,00:32,5P,False,False,0,1,5_6,False,0,False,0
+00:09,False,0.00,0,1,00:09,0.00,False,,1,9,1,True,5_6,,175.00,210.00,1.08,00:33,5P,False,False,0,1,5_6,False,0,False,0
+00:10,False,0.00,0,1,00:10,0.00,False,,1,9,1,True,5_6,,175.00,210.00,22.08,00:34,5P,False,False,0,1,5_6,False,0,False,0
+00:10,False,0.00,0,1,00:10,0.00,False,,1,9,1,True,5_6,,175.00,210.00,64.08,00:35,5P,False,False,0,1,5_6,False,0,False,0
+00:12,False,0.00,0,1,00:12,0.00,False,,1,9,1,True,5_6,,175.00,210.00,94.08,00:36,5P,False,False,0,1,5_6,False,0,False,0
+00:12,False,0.00,0,1,00:12,0.00,False,,1,9,1,True,5_6,,175.00,210.00,95.08,00:37,5P,False,False,0,1,5_6,False,0,False,0
+00:13,Fa

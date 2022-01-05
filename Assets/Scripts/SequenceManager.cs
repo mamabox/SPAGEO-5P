@@ -347,7 +347,7 @@ public class SequenceManager : MonoBehaviour
         gameManager.attemptsAllowed = false;
         gameManager.sessionData.selectedRouteCoord = new List<string>();
         gameManager.sessionData.routeStart = new List<string> { gameManager.scenariosData.sc9Data.trials[0].position, "" }; //forcing cardinal direciton 
-
+        gameManager.freezeMovement = true;
 
 
     }

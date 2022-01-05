@@ -106,19 +106,21 @@ public class PlayerController : MonoBehaviour
             //horizontalInput = Input.GetAxis("Horizontal");
             //verticalInput = Input.GetAxis("Vertical");
 
-            if (moveInput > 0)  //Move forward
+            if (!gameManager.freezeMovement)    //If movement not frozen (scenario 9)
             {
-                transform.Translate(Vector3.forward * moveInput * Time.deltaTime * speed);
-                tookStep = false;
-                playerHasMoved = true;
+                if (moveInput > 0)  //Move forward
+                {
+                    transform.Translate(Vector3.forward * moveInput * Time.deltaTime * speed);
+                    tookStep = false;
+                    playerHasMoved = true;
+                }
+                else if (moveInput < 0 && !tookStep)    //Move backwards
+                {
+                    StartCoroutine(StepBack());
+                    tookStep = true;
+                    playerHasMoved = true;
+                }
             }
-            else if (moveInput < 0 && !tookStep)    //Move backwards
-            {
-                StartCoroutine(StepBack());
-                tookStep = true;
-                playerHasMoved = true;
-            }
-
             //LOOK AROUND
             currentRotation.y += rotateInput * Time.deltaTime * lookSpeed;
             transform.eulerAngles = new Vector3(0, currentRotation.y, 0);

@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     //public bool sessionPaused;          // Is the sessions paused?
     public bool gameIsPaused = false;
     public bool freezePlayer;   // Use to freeze the player's movement when a dialog box is opened
+    public bool freezeMovement; //Used to freeze the player's movement in Sc9 (PTSOT)
     public bool attemptsAllowed;        //Is the player allowed more attempts?
     public bool recordRoute;        //Player is ready to start recording
 
@@ -162,6 +163,8 @@ public class GameManager : MonoBehaviour
         pauseDuration = 0;
         playerController.keyboardShortcutsEnabled = true;
         Time.timeScale = 1;
+        freezeMovement = false; // Movement frozen only within sc9 (PTSOT)
+        Debug.Log("freezeMovement set to false");
         //gameIsPaused = false; - moved inside firs if
 
         //DebugTime();
@@ -213,6 +216,7 @@ public class GameManager : MonoBehaviour
         sessionStarted = true;  //Start session
         sessionEnded = false;
         freezePlayer = false;
+        freezeMovement = false;
         uiManager.validationCheck = false;
         //Time.timeScale = 1;
         if (!sessionData.sessionPaused) //Session was not paused

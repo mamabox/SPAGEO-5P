@@ -109,6 +109,7 @@ public class Sc9Manager : MonoBehaviour
         player.transform.LookAt(startObj.transform);
         startRotation = player.transform.rotation.eulerAngles.y;
         player.GetComponent<PlayerController>().currentRotation = player.transform.rotation.eulerAngles;
+        //gameManager.freezeMovement = true;
         //sliderUI.value = startRotation;
 
         //Calculate angle to target
