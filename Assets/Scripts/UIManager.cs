@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI shorcutsText;
     public TextMeshProUGUI ptsotText;
+    public TextMeshProUGUI ptsotCalcText;
 
 
     public TMP_InputField posXInputField;

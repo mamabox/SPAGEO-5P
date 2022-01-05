@@ -1,0 +1,14 @@
+{
+	"sessionStart":"Appui sur start pour commnencer.",
+	"sessionEnd": "La session est terminé.",
+	"lastAttempt":"Dernière tentative.",
+	"newAttempt":"Nouvelle tentative.",
+	"noAttemptsLeft":"Il ne te reste plus de tentatives.",
+	"recordingRoute": "Enregistrement de trajet.",
+	"waitForInstructions":"Attend les instructions.",
+	"routeValid":"Parcour validé.",
+	"routeInvalid":"Parcour non validé.",
+	"lastValidation":"Il te reste 1 validation.",
+	"noValidaitonsLeft":"Il ne reste plus de validation.",
+	"validationNotAllowed":"Pas de validation possible."
+}

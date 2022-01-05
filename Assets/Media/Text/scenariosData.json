@@ -125,86 +125,105 @@
         "description": "Tâche de pointage",
         "dropdownMenuText": "PTSOT",
         "instructions": {
-            "start": "Votre objectif est de blah blah blah",
+            "start": "Ton objectif est de blah blah blah",
             "end": "Bien joué, tu as terminé. Appuie sur le bouton (B) pour revenir au menu principal",
-            "attempts": ["Tourne toi vers ", " et appuie sur le bouton (C) pour valider."]
+            "attempts": ["Tentative: ", "Tourne toi vers ", " et appuie sur le bouton (C) pour valider."]
         },
         "propObjs": [
             {
                 "name": "drapeau",
-                "pronoun": "le"
+                "pronoun": "le",
+                "nearbyIntersection":"5_6"
             },
             {
                 "name": "cartons",
-                "pronoun": "les"
+                "pronoun": "les",
+                "nearbyIntersection":"4_6"
             },
             {
                 "name": "camion des éboueurs",
-                "pronoun": "le"
+                "pronoun": "le",
+                "nearbyIntersection":"3_6"
             },
                         {
                 "name": "chevalet",
-                "pronoun": "le"
+                "pronoun": "le",
+                "nearbyIntersection":"3_6"
             },
             {
                 "name": "container maritine",
-                "pronoun": "le"
+                "pronoun": "le",
+                "nearbyIntersection":"2_6"
             },
             {
-                "name": "tas de traverse en bois",
-                "pronoun": "le"
+                "name": "tas de traverses en bois",
+                "pronoun": "le",
+                "nearbyIntersection":"1_6"
             },
             {
                 "name": "bidon d'essence",
-                "pronoun": "le"
+                "pronoun": "le",
+                "nearbyIntersection":"1_5"
             },
             {
                 "name": "affiche",
-                "pronoun": "l"
+                "pronoun": "l'",
+                "nearbyIntersection":"1_4"
             },
             {
                 "name": "bancs",
-                "pronoun": "les"
+                "pronoun": "les",
+                "nearbyIntersection":"1.5_4"
             },
             {
                 "name": "distributeur de boisson",
-                "pronoun": "le"
+                "pronoun": "le",
+                "nearbyIntersection":"2_5"
             },
             {
                 "name": "canapé",
-                "pronoun": "le"
+                "pronoun": "le",
+                "nearbyIntersection":"3_5"
             },
             {
                 "name": "piano",
-                "pronoun": "le"
+                "pronoun": "le",
+                "nearbyIntersection":"3_4"
             },
             {
                 "name": "échelle",
-                "pronoun": "l"
+                "pronoun": "l",
+                "nearbyIntersection":"3_3"
             },
             {
                 "name": "caisses plates",
-                "pronoun": "les"
+                "pronoun": "les",
+                "nearbyIntersection":"3_2"
             },
             {
                 "name": "bouées",
-                "pronoun": "les"
+                "pronoun": "les",
+                "nearbyIntersection":"6_1"
             },
             {
                 "name": "chariot à tirer",
-                "pronoun": "le"
+                "pronoun": "le",
+                "nearbyIntersection":"6_2"
             },
             {
                 "name": "barrière",
-                "pronoun": "la"
+                "pronoun": "la",
+                "nearbyIntersection":"6_3"
             },
             {
                 "name": "bobines",
-                "pronoun": "les"
+                "pronoun": "les",
+                "nearbyIntersection":"5_3"
             },
             {
                 "name": "cône",
-                "pronoun": "le"
+                "pronoun": "le",
+                "nearbyIntersection":"4_3"
             }
         ],
         "trials": [

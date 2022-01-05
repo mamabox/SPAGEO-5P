@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
     public bool overideOnIntersectionExit; //Using when resetting route manually
 
     public ScenariosData scenariosData;
+    public TextData textDataFR;
 
     // Start is called before the first frame update
     private void Awake()

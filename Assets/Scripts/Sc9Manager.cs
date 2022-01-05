@@ -16,7 +16,9 @@ public class Sc9Manager : MonoBehaviour
     private float startRotation;
     private float correctRotation;
     private float endRotation;
-    private float errorRotation;
+    private float rotationError;
+    private float totalRotError;
+    private float avgRotationError;
 
     private int trialsCount;
     private int currentTrial;
@@ -41,6 +43,8 @@ public class Sc9Manager : MonoBehaviour
 
         currentTrial = 1;
         startPosition = new Vector3(0, 0, 0);
+        avgRotationError = 0;
+        totalRotError = 0;
         //Debug.Log("Inside sc9Manager - Awake()");
 
     }
@@ -56,8 +60,8 @@ public class Sc9Manager : MonoBehaviour
 
     // Display the instructions only if the session has started and not ended
     void Update()
-    {
-       if (gameManager.sessionStarted && !gameManager.sessionEnded)
+    {       
+        if (gameManager.sessionStarted && !gameManager.sessionEnded)
             {
             gameManager.uiManager.dialogBoxCheckpoint.gameObject.SetActive(true);
         }
@@ -109,7 +113,7 @@ public class Sc9Manager : MonoBehaviour
         targetObj = allObjects[targetObjNum - 1];
 
         //Display instructions
-        string attemptInstructionText = "Trial: " + currentTrial + " / " + trialsCount + "|"+ _sc9Data.instructions.attempts[0] + objNames[targetObjNum - 1] + _sc9Data.instructions.attempts[1];
+        string attemptInstructionText = "Trial: " + currentTrial + " / " + trialsCount + "|"+ _sc9Data.instructions.attempts[1] + objNames[targetObjNum - 1] + _sc9Data.instructions.attempts[2];
         gameManager.uiManager.OpenCheckpointDialogBox(attemptInstructionText, false);
 
         //Update dropdown labels
@@ -148,7 +152,7 @@ public class Sc9Manager : MonoBehaviour
         Vector3 targetDir = targetObj.transform.position - player.transform.position;
         angleToTarget = Vector3.Angle(targetDir, player.transform.forward);
 
-        gameManager.uiManager.ptsotText.text = ("Trial #: " + currentTrial + "\nStart obj: " + objNames[startObjNum-1] + "\nTarget obj: " + objNames[targetObjNum - 1] + "\nStart rot: " + startRotation + "\nAngle to target = " + angleToTarget.ToString() + "\nCorrect rot to target = " + correctRotation);
+        gameManager.uiManager.ptsotText.text = (_sc9Data.instructions.attempts[0] + currentTrial + "\nStart obj: " + objNames[startObjNum-1] + "\nTarget obj: " + objNames[targetObjNum - 1] + "\nStart rot: " + startRotation + "\nAngle to target = " + angleToTarget.ToString() + "\nCorrect rot to target = " + correctRotation);
 
         //UItext.text = ("Player's start rotation: " + startRotation + "\n Angle to target = " + angleToTarget.ToString());
         //ResetSPheres();
@@ -159,8 +163,10 @@ public class Sc9Manager : MonoBehaviour
     private void Calculate()
     {
         endRotation = player.transform.rotation.eulerAngles.y;
-        errorRotation = Mathf.Abs(endRotation - correctRotation);
+        rotationError = Mathf.Abs(endRotation - correctRotation);
+        totalRotError += rotationError;
+        avgRotationError = totalRotError / currentTrial;
 
-        gameManager.uiManager.ptsotText.text = ("Trial #: " + currentTrial + "\nStart obj: " + objNames[startObjNum - 1] + "\nTarget obj: " + objNames[targetObjNum - 1] + "\nStart rot: " + startRotation + "\nAngle to target = " + angleToTarget.ToString() + "\nCorrect rot to target = " + correctRotation + "\n\n Previous trial end rot: " + endRotation + "\n Previous trial error: " + errorRotation);
+        gameManager.uiManager.ptsotCalcText.text = (_sc9Data.instructions.attempts[0] + currentTrial + " / " + trialsCount + "\nTot error: " + totalRotError + "\nAvg error: " + avgRotationError + "\n\nPrevious correct rot: " + correctRotation + "\nPrevious end rot: " + endRotation + "\nPrevious error: " + rotationError);
     }
 }
