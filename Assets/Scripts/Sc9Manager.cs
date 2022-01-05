@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System.IO;
+using UnityEngine.SceneManagement;
 
 /**
  * Sc9Manager.cs
@@ -44,6 +46,15 @@ public class Sc9Manager : MonoBehaviour
     private float totalRotError;    // Sum of rotation error for all trials
     private float avgRotationError; // Avg rotation error, updated after each trial
 
+    //Save Data
+    private string filePath;    //Save directory for exports
+    private string fileName;    //Name of data file
+    private StreamWriter sw;
+    private char fileNameDelimiter = '-';
+    private char delimiter = ',';
+    private string dateTime;
+
+
 
     private void Awake()
     {
@@ -62,7 +73,18 @@ public class Sc9Manager : MonoBehaviour
         trialsOrder = ConstructTrialIndex();
         CreateNounsPronouns(); //Creates a list of all objects names with their pronoums
 
+        //Save data
+        filePath = Path.Combine(Directory.GetCurrentDirectory(), "Exports/SessionsData/"); //For macOS, Linux
+        if (!System.IO.Directory.Exists(filePath))    //if save directory does not exist, create it
+        {
+            System.IO.Directory.CreateDirectory(filePath);
+        }
+
     }
+
+    //SAVE DATA
+    
+
     // Constructs a list with the order in which player goes through trials.Is randomized or not based on setting in scenariosData.json
     private List<int> ConstructTrialIndex()
     {
@@ -151,6 +173,7 @@ public class Sc9Manager : MonoBehaviour
     public void ValidateTrial()
     {
         CalculateRotation();
+        SaveData();
 
         if (trialsListIndex < trialsCount - 1)   // IF there are trials left, setup the next trial
         {
@@ -161,10 +184,13 @@ public class Sc9Manager : MonoBehaviour
         else // IF no trials left, end the session
         {
             gameManager.sessionEnded = true;
+            StopSavingData();
             gameManager.uiManager.dialogBox.GetComponent<DialogBox>().returnToMenu = true;
             gameManager.uiManager.OpenDialogBox(_sc9Data.instructions.end);
         }
     }
+
+
 
     // For each trial, calculates the degree of error between the correct rotation and the rotation validated by the player. Also tracks the total and average errors for all trials.
     private void CalculateRotation()
@@ -176,5 +202,45 @@ public class Sc9Manager : MonoBehaviour
 
         // Display information on debug canvas
         gameManager.uiManager.ptsotCalcText.text = (_sc9Data.instructions.attempts[0] + trialsListIndex + " / " + trialsCount + "\nTot error: " + totalRotError + "\nAvg error: " + avgRotationError + "\n\nPrevious correct rot: " + correctRotation + "\nPrevious end rot: " + endRotation + "\nPrevious error: " + rotationError);
+    }
+    public void StartSavingData()
+    {
+        SetFileName();
+        sw = File.AppendText(filePath + fileName);
+        sw.WriteLine(HeadersConstructor()); //Add Headers to the file
+    }
+    public void StopSavingData()
+    {
+        sw.Close();
+    }
+    private void SetFileName()
+    {
+        string studentID = gameManager.sessionData.studentIDs[0];
+        string sessionSummaryText = "ELV" + studentID + fileNameDelimiter + "SCN" + gameManager.sessionData.selectedScenario;
+        dateTime = System.DateTime.Now.ToString("yyyyMMdd_HHmmss");
+        fileName = dateTime + fileNameDelimiter + sessionSummaryText + ".csv";
+
+    }
+
+    private string HeadersConstructor()
+    {
+        string sessionHeader = "dateTime" + delimiter + "studentID" + delimiter + "scene" + delimiter + "scenario";
+        string trialsListHeader = "trialsCount" + delimiter + "trialsOrder" + delimiter + "trialsOrderIndex";
+        string trialHeader = "trialNb" + delimiter + "startObjNum" + delimiter + "startObj" + delimiter + "targetObjNb" + delimiter + "targetObj";
+        string playerHeader = "startRotation" + delimiter + "correctRotation" + delimiter + "angleToTarget" + delimiter + "endRotation";
+        string calculationsHeader = "rotationError" + delimiter + "totalRotationError" + delimiter + "avgRotationError";
+
+        return sessionHeader + delimiter + trialsListHeader + delimiter + trialHeader + delimiter + playerHeader + delimiter + calculationsHeader;
+    }
+
+    private void SaveData()
+    {
+        string sessionData = dateTime + delimiter + gameManager.sessionData.studentIDs[0] + delimiter + SceneManager.GetActiveScene().name + delimiter + gameManager.sessionData.selectedScenario;
+        string trialsListData = trialsCount.ToString() + delimiter + string.Join("-", trialsOrder) + delimiter + trialsListIndex; ;
+        string trialData = currentTrial.ToString() + delimiter + startObjNum + delimiter + objNames[startObjNum - 1] + delimiter + targetObjNum + delimiter + objNames[targetObjNum - 1];
+        string playerData = startRotation.ToString() + delimiter + correctRotation + delimiter + angleToTarget + delimiter + endRotation;
+        string calculationsData = rotationError.ToString() + delimiter + totalRotError.ToString() + delimiter + avgRotationError.ToString();
+
+        sw.WriteLine(sessionData + delimiter + trialsListData + delimiter + trialData + delimiter + playerData + delimiter + calculationsData);
     }
 }

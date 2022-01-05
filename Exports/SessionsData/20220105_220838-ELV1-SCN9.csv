@@ -1,0 +1,5 @@
+dateTime,studentID,scene,scenario,trialsCount,trialsOrder,trialsListIndex,trialNb,startObjNum,startObj,targetObjNb,targetObj,startRotation,correctRotation,angleToTarget,endRotation,rotationError,rotationError,totalRotationError,avgRotationError
+00:18,1,5P,9,4,trialsOrder,0,109les bobines,7,le bidon d'essence,677.7631253.25,253.25,253.25,84.42
+00:19,1,5P,9,4,trialsOrder,1,92les cartons,7,le bidon d'essence,824.9544115.65,115.65,368.90,184.45
+00:19,1,5P,9,4,trialsOrder,2,89le drapeau,2,les cartons,1121.7356.34,56.34,425.23,Infinity
+00:20,1,5P,9,4,trialsOrder,3,92le camion des éboueurs,4,le chevalet,941.5024167.26,167.26,592.49,592.49

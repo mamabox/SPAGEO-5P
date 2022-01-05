@@ -229,7 +229,15 @@ public class GameManager : MonoBehaviour
             sessionData.sessionStartTime = Time.time;   //Start time is now
             attemptTime = sessionData.sessionStartTime; //Attempt time is now
             uiManager.sessionStatusText.text = "(S) Session status: Started";   //Update UI 
-            saveSessionData.StartSavingData();  //Start saving game session data
+            
+            if (sessionData.selectedScenario != 9)
+            { 
+saveSessionData.StartSavingData();  //Start saving game session data
+                                    }
+            else
+                {
+                sc9Manager.StartSavingData();
+            }
         }
         else  //IF the session was paused after a validaton by image
         {
@@ -243,7 +251,11 @@ public class GameManager : MonoBehaviour
           
             //PauseGame();
             uiManager.sessionStatusText.text = "(S) Session status: Resumed";
-            saveSessionData.ContinueSavingData();
+            if (sessionData.selectedScenario != 9)
+            {
+                saveSessionData.ContinueSavingData();  //Start saving game session data
+            }
+            //saveSessionData.ContinueSavingData();
         }
         //Debug.Log("Time scale:" + Time.timeScale);
         //Debug.Log("2sessionPaused: " + sessionData.sessionPaused + "- freezePlayer: " + freezePlayer + "- Time scale:" + Time.timeScale);
@@ -258,7 +270,11 @@ public class GameManager : MonoBehaviour
         freezePlayer = true;
         Time.timeScale = 0;
         gameIsPaused = true;
-        saveSessionData.SaveData();
+        if (sessionData.selectedScenario != 9)
+        {
+            saveSessionData.SaveData();  //Start saving game session data
+        }
+        //saveSessionData.SaveData();
         //PauseGame();
         sessionData.pauseDistance = sessionDistance;
         //PauseGame();
@@ -284,8 +300,15 @@ public class GameManager : MonoBehaviour
             uiManager.dialogBox.GetComponent<DialogBox>().returnToMenu = true;
             uiManager.OpenDialogBox("Session terminé.");
         }
-        saveSessionData.SaveData();    //Write data right before closing file
-        saveSessionData.stopSavingData();   //Stop saving data
+        if (sessionData.selectedScenario != 9)
+        {
+            saveSessionData.SaveData();    //Write data right before closing file
+            saveSessionData.stopSavingData();   //Stop saving data
+        }
+                else
+        {
+            sc9Manager.StopSavingData();
+        }
     }
 
     // Used in scenario 3, record the route followed by the player

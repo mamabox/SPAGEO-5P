@@ -143,7 +143,7 @@ public class UIManager : MonoBehaviour
     {
 
         gameManager.freezePlayer = true;
-        dialogBox.GetComponent<DialogBox>().instructionsText.text = text; //send the checkpoitn text to the dialog box
+        dialogBox.GetComponent<DialogBox>().instructionsText.text = text.Replace("|", System.Environment.NewLine); //send the checkpoitn text to the dialog box
         dialogBox.GetComponent<DialogBox>().firstDialog = false;
         dialogBox.gameObject.SetActive(true);
 

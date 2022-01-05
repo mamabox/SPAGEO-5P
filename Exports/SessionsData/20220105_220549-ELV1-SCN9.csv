@@ -1,0 +1,5 @@
+dateTime,studentID,scene,scenario,trialsCount,trialsOrder,trialsListIndex,trialNb,startObjNum,startObj,targetObjNb,targetObj,startRotation,correctRotation,angleToTarget,endRotation,rotationError,rotationError,totalRotationError,avgRotationError
+00:22,1,5P,9,48System.Collections.Generic.List`1[System.Int32],0,109les bobines,7,le bidon d'essence,696.3881234.63,234.63,234.63,78.21
+00:22,1,5P,9,48System.Collections.Generic.List`1[System.Int32],1,89le drapeau,2,les cartons,1121.7356.34,56.34,290.96,Infinity
+00:23,1,5P,9,48System.Collections.Generic.List`1[System.Int32],2,92le camion des éboueurs,4,le chevalet,918.7797189.98,189.98,480.94,480.94
+00:24,1,5P,9,48System.Collections.Generic.List`1[System.Int32],3,92les cartons,7,le bidon d'essence,824.9544115.65,115.65,596.59,298.30

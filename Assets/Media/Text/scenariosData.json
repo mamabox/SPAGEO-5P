@@ -126,7 +126,7 @@
         "dropdownMenuText": "PTSOT",
         "instructions": {
             "start": "Ton objectif est de blah blah blah",
-            "end": "Bien joué, tu as terminé. Appuie sur le bouton (B) pour revenir au menu principal",
+            "end": "Bien joué, tu as terminé.|Appui sur le bouton (B) pour revenir au menu principal",
             "attempts": ["Tentative: ", "Tourne toi vers ", " et appuie sur le bouton (C) pour valider."]
         },
         "propObjs": [

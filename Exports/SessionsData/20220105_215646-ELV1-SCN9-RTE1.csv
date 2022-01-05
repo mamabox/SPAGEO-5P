@@ -1,0 +1,15 @@
+sessionTime,gameIsPause,sessionDistance,validationCount,attemptCount,attemptTime,attemptDistance,isGroupSession,groupID,studentIDs,scenario,selectedRoute,isSender,routeStart,selectedRouteCoord,posX,posZ,rotation,time,scene,routeIsValid,routeEndReached,routeErrorAt,routeLength,routeCoord,isOnCheckpoint,lastCheckpoint,isOnHotspot,lastHotspot
+00:00,False,0.00,0,1,00:00,0.00,False,,1,9,1,True,5.5_6,,105.00,210.00,144.66,00:18,5P,False,False,0,1,3_6,False,0,False,0
+00:01,False,87.50,0,1,00:01,87.50,False,,1,9,1,True,5.5_6,,105.00,210.00,144.66,00:19,5P,False,False,0,1,3_6,False,0,False,0
+00:02,False,87.50,0,1,00:02,87.50,False,,1,9,1,True,5.5_6,,105.00,210.00,144.66,00:20,5P,False,False,0,1,3_6,False,0,False,0
+00:03,False,87.50,0,1,00:03,87.50,False,,1,9,1,True,5.5_6,,105.00,210.00,144.66,00:21,5P,False,False,0,1,3_6,False,0,False,0
+00:03,False,87.50,0,1,00:03,87.50,False,,1,9,1,True,5.5_6,,105.00,210.00,144.66,00:22,5P,False,False,0,1,3_6,False,0,False,0
+00:05,False,87.50,0,1,00:05,87.50,False,,1,9,1,True,5.5_6,,105.00,210.00,130.41,00:23,5P,False,False,0,1,3_6,False,0,False,0
+00:05,False,87.50,0,1,00:05,87.50,False,,1,9,1,True,5.5_6,,105.00,210.00,112.03,00:24,5P,False,False,0,1,3_6,False,0,False,0
+00:07,False,213.69,1,1,00:07,213.69,False,,1,9,1,True,5.5_6,,175.00,105.00,66.34,00:25,5P,False,False,0,2,3_6-5_3,False,0,False,0
+00:08,False,213.69,1,1,00:08,213.69,False,,1,9,1,True,5.5_6,,175.00,105.00,105.30,00:26,5P,False,False,0,2,3_6-5_3,False,0,False,0
+00:09,False,213.69,1,1,00:09,213.69,False,,1,9,1,True,5.5_6,,175.00,105.00,105.30,00:27,5P,False,False,0,2,3_6-5_3,False,0,False,0
+00:09,False,324.37,2,1,00:09,324.37,False,,1,9,1,True,5.5_6,,140.00,210.00,127.20,00:28,5P,False,False,0,3,3_6-5_3-4_6,False,0,False,0
+00:11,False,324.37,2,1,00:11,324.37,False,,1,9,1,True,5.5_6,,140.00,210.00,79.77,00:29,5P,False,False,0,3,3_6-5_3-4_6,False,0,False,0
+00:12,False,376.87,3,1,00:12,376.87,False,,1,9,1,True,5.5_6,,192.50,210.00,302.98,00:30,5P,False,False,0,3,3_6-5_3-4_6,False,0,False,0
+00:12,False,376.87,3,1,

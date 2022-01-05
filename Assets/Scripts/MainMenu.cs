@@ -93,9 +93,13 @@ public class MainMenu : MonoBehaviour
                 routesToAdd.Add("Barrière-" + (i + 1));
             }
         }
-        else if (scenarioID == 8 || scenarioID == 9)
+        else if (scenarioID == 8)
         {
             routesToAdd.Add("WIP");
+        }
+        else if (scenarioID == 9)
+        {
+            routesToAdd.Add("v1.0");
         }
         else // Scenarios 2 - 5
         {
