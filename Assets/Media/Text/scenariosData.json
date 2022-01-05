@@ -117,16 +117,17 @@
     },
     "sc8Data": {
         "scenarioID": 8,
-        "description": "Recherche d'un object"
+        "description": "Recherche d'un object",
+        "dropdownMenuText": "Recherche d'un object"
     },
     "sc9Data": {
         "scenarioID": 9,
         "description": "Tâche de pointage",
+        "dropdownMenuText": "PTSOT",
         "instructions": {
-            "taskStart": "Votre objectif est de blah blah blah",
-            "trialStart": "Tourne toi vers ",
-            "trialEnd": ". Et appuie sur le boutton de validation.",
-            "taskEnd": "Bien joué, tu as terminé. Click OK pour revenir au menu principal"
+            "start": "Votre objectif est de blah blah blah",
+            "end": "Bien joué, tu as terminé. Appuie sur le bouton (B) pour revenir au menu principal",
+            "attempts": ["Tourne toi vers ", " et appuie sur le bouton (C) pour valider."]
         },
         "propObjs": [
             {

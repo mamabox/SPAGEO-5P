@@ -24,13 +24,14 @@ public class GameManager : MonoBehaviour
     private IntersectionManager intersectionManager;
     private RouteManager routeManager;
     private PlayerController playerController;
-    private UIManager uiManager;
+    public UIManager uiManager;
     private SequenceManager sequenceManager;
     private CheckpointManager checkpointManager;
     public GlobalControl.SessionData sessionData;
     private SaveSessionData saveSessionData;
     private EventSystem eventSystem;
     private LimiterManager limiterMansger;
+    private Sc9Manager sc9Manager;
     //public Canvas canvas;
 
     public int blockSize = 35; //define the city's block size in meters
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         checkpointManager = GetComponent<CheckpointManager>();
         saveSessionData = GetComponent<SaveSessionData>();
         limiterMansger = GetComponent<LimiterManager>();
+        sc9Manager = GameObject.Find("ScenariosManager"). GetComponent<Sc9Manager>();
 
         overideOnIntersectionExit = false;
 
@@ -164,7 +166,7 @@ public class GameManager : MonoBehaviour
         playerController.keyboardShortcutsEnabled = true;
         Time.timeScale = 1;
         freezeMovement = false; // Movement frozen only within sc9 (PTSOT)
-        Debug.Log("freezeMovement set to false");
+        //Debug.Log("freezeMovement set to false");
         //gameIsPaused = false; - moved inside firs if
 
         //DebugTime();
@@ -216,7 +218,8 @@ public class GameManager : MonoBehaviour
         sessionStarted = true;  //Start session
         sessionEnded = false;
         freezePlayer = false;
-        freezeMovement = false;
+        if (sessionData.selectedScenario != 9)
+            freezeMovement = false;
         uiManager.validationCheck = false;
         //Time.timeScale = 1;
         if (!sessionData.sessionPaused) //Session was not paused
@@ -479,6 +482,12 @@ public class GameManager : MonoBehaviour
             else if (sessionData.selectedScenario == 5)  //Scenario 5 (no validation)
             {
                 uiManager.routeValidationText.text = "No validation possible";
+            }
+            //Scenario 9
+            else if (sessionData.selectedScenario == 9)  //Scenario 5 (no validation)
+            {
+                //uiManager.routeValidationText.text = "Validation text";
+                sc9Manager.ValidateTrial();
             }
         }
         else

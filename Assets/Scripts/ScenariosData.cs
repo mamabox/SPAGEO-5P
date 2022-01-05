@@ -62,10 +62,16 @@ public class Sc9Data
     public int scenarioID;
     public string description;
     public string dropdownMenuText;
-    public List<Instruction> instructions;
+    public Instructions instructions;
     public List<PropObj> propObjs;
     //public List<string> objectsTemp;
     public List<Trial> trials;
+}
+public class ScInfo
+{
+    public int scenarioID;
+    public string description;
+    public string dropdownMenuText;
 }
 
 [System.Serializable]
@@ -73,6 +79,7 @@ public class PropObj
 {
     public string name;
     public string pronoun;
+    //public string nearbyIntersection;
 }
 
 [System.Serializable]
@@ -92,10 +99,11 @@ public class Barriers
 }
 
 [System.Serializable]
-public class Instruction
+public class Instructions
 {
-    public string description;
-    public string text;
+    public string start;
+    public string end;
+   public List<string> attempts;
 }
 
 [System.Serializable]

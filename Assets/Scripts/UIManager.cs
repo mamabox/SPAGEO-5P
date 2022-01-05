@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI backStepForceText;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI shorcutsText;
+    public TextMeshProUGUI ptsotText;
 
 
     public TMP_InputField posXInputField;
@@ -147,6 +148,36 @@ public class UIManager : MonoBehaviour
 
         dialogBox.GetComponent<DialogBox>().dialogBoxBtn.Select();
         dialogBox.GetComponent<DialogBox>().dialogBoxBtn.OnSelect(null);
+
+    }
+
+    // text = text to display; showHidebutton = hide (false) or show (true) button)
+    public void OpenCheckpointDialogBox(string text, bool showHideButton)
+    {
+
+        //gameManager.freezePlayer = true;
+        dialogBoxCheckpoint.GetComponent<CheckpointDialogBox>().instructionsText.text = text.Replace("|", System.Environment.NewLine); //send the checkpoitn text to the dialog box
+        dialogBoxCheckpoint.GetComponent<CheckpointDialogBox>().firstDialog = false;
+        dialogBoxCheckpoint.gameObject.SetActive(true);
+        dialogBoxCheckpoint.GetComponent<CheckpointDialogBox>().dialogBoxBtn.gameObject.SetActive(showHideButton);
+
+        //dialogBox.GetComponent<DialogBox>().dialogBoxBtn.Select();
+        //dialogBox.GetComponent<DialogBox>().dialogBoxBtn.OnSelect(null);
+
+        ////Display information UI
+        //gameManager.freezePlayer = false;
+        //if (gameManager.sessionData.selectedRoute == 0) // If séance 4P - S0
+        //{
+        //    uiManager.dialogBoxCheckpoint.GetComponent<CheckpointDialogBox>().instructionsText.text = checkpointsTextS0.ElementAt(checkpoint.ID - 1).Replace("|", System.Environment.NewLine); //send the checkpoitn text to the dialog box
+        //}
+        //else // If séance 4P - S6
+        //{
+        //    uiManager.dialogBoxCheckpoint.GetComponent<CheckpointDialogBox>().instructionsText.text = checkpointsTextS6.ElementAt(checkpoint.ID - 1).Replace("|", System.Environment.NewLine); //send the checkpoitn text to the dialog box
+        //}
+
+        //uiManager.dialogBoxCheckpoint.gameObject.SetActive(true);
+        //uiManager.dialogBoxCheckpoint.GetComponent<CheckpointDialogBox>().dialogBoxBtn.Select();
+        //uiManager.dialogBoxCheckpoint.GetComponent<CheckpointDialogBox>().dialogBoxBtn.OnSelect(null);
 
     }
 

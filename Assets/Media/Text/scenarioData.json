@@ -1,0 +1,49 @@
+{
+    "scenarioData": {
+        "scenarioID": 9,
+        "description": "PTSOT online",
+        "dropdownmenutext": "PTSOT online (menu)",
+        "instructions": [
+            {
+            "start":"Votre objectif est de blah blah blah",
+            "end": "Bien joué, tu as fini",
+            "attempts":["Tourne toi vers ", "et appuie sur le bouton de validation"]
+            }
+        ],
+        "propobjects":[
+            {
+                "name":"drapeau",
+                "pronoun":"le"
+            },
+                        {
+                "name":"boites en cartons",
+                "pronoun":"les"
+            },
+                        {
+                "name":"camion",
+                "pronoun":"le"
+            },
+                        {
+                "name":"panneau",
+                "pronoun":"le"
+            },
+        ],
+        "trials": [
+            {
+                "position": "-1_-3",
+                "startObj": 1,
+                "targetObj": 2
+            },
+            {
+                "position": "1_2",
+                "startObj": 3,
+                "targetObj": 4
+            },
+            {
+                "position": "6_8",
+                "startObj": 3,
+                "targetObj": 1
+            }
+        ]
+    }
+}
