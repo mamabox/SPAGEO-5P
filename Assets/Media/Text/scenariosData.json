@@ -226,6 +226,7 @@
                 "nearbyIntersection":"4_3"
             }
         ],
+        "randomTrialsOrder": true,
         "trials": [
             {
                 "position": "5.5_6",
@@ -240,6 +241,11 @@
             {
                 "position": "4_6",
                 "startObj": 2,
+                "targetObj": 7
+            },
+                        {
+                "position": "5_3",
+                "startObj": 18,
                 "targetObj": 7
             }
         ]

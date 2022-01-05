@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class Sc9Manager : MonoBehaviour
 {
@@ -21,9 +20,11 @@ public class Sc9Manager : MonoBehaviour
     private float avgRotationError;
 
     private int trialsCount;
-    private int currentTrial;
+    private int currentTrial;   // What is the current trial
+    private int trialsListIndex;   // What is the index of trials from the ordered or unordered list of trials
     private int startObjNum;
     private int targetObjNum;
+    private List<int> trialsOrder;
 
     public List<string> objNames; // List of all objects names + pronoums
 
@@ -41,19 +42,42 @@ public class Sc9Manager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         _sc9Data = gameManager.scenariosData.sc9Data;
 
-        currentTrial = 1;
+        currentTrial = 0;
         startPosition = new Vector3(0, 0, 0);
         avgRotationError = 0;
         totalRotError = 0;
+        trialsCount = gameManager.scenariosData.sc9Data.trials.Count();
         //Debug.Log("Inside sc9Manager - Awake()");
+        CreateNounsPronouns();
+        trialsListIndex = 0;
+        trialsOrder = ConstructTrialIndex();
 
     }
 
+    private List<int> ConstructTrialIndex()
+    {
+        List<int> _listOrdered = new List<int>();
+        for (int x = 0; x < trialsCount; x++)
+        {
+            _listOrdered.Add(x);
+        }
+        if (!_sc9Data.randomTrialsOrder)
+        {
+            Debug.Log("trials ordered list:" + string.Join("- ", _listOrdered));
+            return _listOrdered;
+        }
+        else
+        {
+            var rnd = new System.Random();
+            List<int> _listUnordered = _listOrdered.OrderBy(ContextMenuItemAttribute => rnd.Next()).ToList();
+            Debug.Log("trials unordered:" + string.Join("- ", _listUnordered));
+            return _listUnordered;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        CreateNounsPronouns();
-        trialsCount = gameManager.scenariosData.sc9Data.trials.Count();
+
         //Debug.Log("Sc9 has this number of trials: " + trialsCount);
         SetupTrial();
     }
@@ -84,9 +108,10 @@ public class Sc9Manager : MonoBehaviour
     {
         Calculate();
 
-        if (currentTrial < trialsCount)   // IF there are trials left, setup the next trial
+        if (trialsListIndex < trialsCount - 1)   // IF there are trials left, setup the next trial
         {
-            currentTrial++;
+            trialsListIndex++;
+            currentTrial = trialsOrder[trialsListIndex];
             SetupTrial();
         }
         else // IF no trials left, end the session
@@ -99,21 +124,22 @@ public class Sc9Manager : MonoBehaviour
 
     public void SetupTrial()
     {
+        currentTrial = trialsOrder[trialsListIndex];
         //Retrieve start coordinates
-        Debug.Log("Start coordinate is: " + gameManager.scenariosData.sc9Data.trials[currentTrial - 1].position);
-        string startCoordStr = gameManager.scenariosData.sc9Data.trials[currentTrial - 1].position;
+        Debug.Log("Start coordinate is: " + gameManager.scenariosData.sc9Data.trials[currentTrial].position);
+        string startCoordStr = gameManager.scenariosData.sc9Data.trials[currentTrial].position;
         //List<string> startCoord = startCoordStr.Split('_').ToList();
         gameManager.GetComponent<IntersectionManager>().GotoCoord(startCoordStr,"X");
 
         //Set the start and target objects
-        startObjNum = gameManager.scenariosData.sc9Data.trials[currentTrial - 1].startObj;
-        targetObjNum = gameManager.scenariosData.sc9Data.trials[currentTrial - 1].targetObj;
+        startObjNum = gameManager.scenariosData.sc9Data.trials[currentTrial].startObj;
+        targetObjNum = gameManager.scenariosData.sc9Data.trials[currentTrial].targetObj;
 
         startObj = allObjects[startObjNum - 1];
         targetObj = allObjects[targetObjNum - 1];
 
         //Display instructions
-        string attemptInstructionText = "Trial: " + currentTrial + " / " + trialsCount + "|"+ _sc9Data.instructions.attempts[1] + objNames[targetObjNum - 1] + _sc9Data.instructions.attempts[2];
+        string attemptInstructionText = _sc9Data.instructions.attempts[0] +  (trialsListIndex + 1) + " / " + trialsCount + "|"+ _sc9Data.instructions.attempts[1] + objNames[targetObjNum - 1] + _sc9Data.instructions.attempts[2];
         gameManager.uiManager.OpenCheckpointDialogBox(attemptInstructionText, false);
 
         //Update dropdown labels
@@ -152,7 +178,7 @@ public class Sc9Manager : MonoBehaviour
         Vector3 targetDir = targetObj.transform.position - player.transform.position;
         angleToTarget = Vector3.Angle(targetDir, player.transform.forward);
 
-        gameManager.uiManager.ptsotText.text = (_sc9Data.instructions.attempts[0] + currentTrial + "\nStart obj: " + objNames[startObjNum-1] + "\nTarget obj: " + objNames[targetObjNum - 1] + "\nStart rot: " + startRotation + "\nAngle to target = " + angleToTarget.ToString() + "\nCorrect rot to target = " + correctRotation);
+        gameManager.uiManager.ptsotText.text = (_sc9Data.instructions.attempts[0] + (trialsListIndex + 1) +  "(trial #"+ currentTrial + ")\nTrials order: " + string.Join(" - ",trialsOrder) + "\nStart obj: " + objNames[startObjNum-1] + "\nTarget obj: " + objNames[targetObjNum - 1] + "\nStart rot: " + startRotation + "\nAngle to target = " + angleToTarget.ToString() + "\nCorrect rot to target = " + correctRotation);
 
         //UItext.text = ("Player's start rotation: " + startRotation + "\n Angle to target = " + angleToTarget.ToString());
         //ResetSPheres();
@@ -167,6 +193,6 @@ public class Sc9Manager : MonoBehaviour
         totalRotError += rotationError;
         avgRotationError = totalRotError / currentTrial;
 
-        gameManager.uiManager.ptsotCalcText.text = (_sc9Data.instructions.attempts[0] + currentTrial + " / " + trialsCount + "\nTot error: " + totalRotError + "\nAvg error: " + avgRotationError + "\n\nPrevious correct rot: " + correctRotation + "\nPrevious end rot: " + endRotation + "\nPrevious error: " + rotationError);
+        gameManager.uiManager.ptsotCalcText.text = (_sc9Data.instructions.attempts[0] + trialsListIndex + " / " + trialsCount + "\nTot error: " + totalRotError + "\nAvg error: " + avgRotationError + "\n\nPrevious correct rot: " + correctRotation + "\nPrevious end rot: " + endRotation + "\nPrevious error: " + rotationError);
     }
 }

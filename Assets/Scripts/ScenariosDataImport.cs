@@ -30,17 +30,6 @@ public class ScenariosDataImport: MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     //Import data from text file using JSON utilitu and save it to gameManager.scenariosData
     [ContextMenu("Import Scenario Data")]

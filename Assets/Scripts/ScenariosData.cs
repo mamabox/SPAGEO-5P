@@ -64,7 +64,7 @@ public class Sc9Data
     public string dropdownMenuText;
     public Instructions instructions;
     public List<PropObj> propObjs;
-    //public List<string> objectsTemp;
+    public bool randomTrialsOrder;
     public List<Trial> trials;
 }
 public class ScInfo
