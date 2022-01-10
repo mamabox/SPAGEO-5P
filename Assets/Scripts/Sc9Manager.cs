@@ -22,6 +22,7 @@ public class Sc9Manager : MonoBehaviour
     private GameObject player;
     private Sc9Data _sc9Data;
     private SequenceManager scenarioManager;
+    public GameObject visor;
 
     //Props
     private GameObject startObj;    // Object the player looks at, at start of trial
@@ -104,12 +105,14 @@ public class Sc9Manager : MonoBehaviour
         trialsOrder = ConstructTrialIndex();
 
         SetupTrial();
+        
     }
     // Display the instructions dialog box only if the session has started and not ended
     public void StartScenario()
     {
         StartSavingData();
         DisplayInstructions();
+        visor.SetActive(true);
     }
 
     public void EndScenario()
@@ -118,6 +121,7 @@ public class Sc9Manager : MonoBehaviour
         gameManager.sessionEnded = true;
         gameManager.uiManager.dialogBoxCheckpoint.gameObject.SetActive(false);
         scenarioManager.scenario1Props.SetActive(false);
+        visor.SetActive(false);
     }
 
     // Constructs a list with the order in which player goes through trials.Is randomized or not based on setting in scenariosData.json
