@@ -127,8 +127,9 @@
         "instructions": {
             "start": "Ton objectif est de blah blah blah",
             "end": "Bien joué, tu as terminé.|Appui sur le bouton (B) pour revenir au menu principal",
-            "attempts": ["Tentative: ", "Tourne toi vers ", " et appuie sur le bouton (C) pour valider."]
+            "attempts": [ "Tentative: ", "Tourne toi vers ", " et appuie sur le bouton (C) pour valider." ]
         },
+        "visorSize": 0.5,
         "propObjs": [
             {
                 "name": "drapeau",

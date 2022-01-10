@@ -63,6 +63,7 @@ public class Sc9Data
     public string description;
     public string dropdownMenuText;
     public Instructions instructions;
+    public float visorSize;
     public List<PropObj> propObjs;
     public bool randomTrialsOrder;
     public List<Trial> trials;

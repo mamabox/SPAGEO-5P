@@ -110,8 +110,10 @@ public class Sc9Manager : MonoBehaviour
     // Display the instructions dialog box only if the session has started and not ended
     public void StartScenario()
     {
+        float _visorSize = gameManager.scenariosData.sc9Data.visorSize;
         StartSavingData();
         DisplayInstructions();
+        visor.GetComponent<RectTransform>().localScale = new Vector3(_visorSize, _visorSize, _visorSize);
         visor.SetActive(true);
     }
 
