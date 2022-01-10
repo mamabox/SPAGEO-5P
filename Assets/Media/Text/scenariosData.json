@@ -230,22 +230,22 @@
         "trials": [
             {
                 "position": "5.5_6",
-                "startObj": 1,
-                "targetObj": 2
+                "startObj": 0,
+                "targetObj": 1
             },
             {
                 "position": "3_6",
-                "startObj": 3,
-                "targetObj": 4
+                "startObj": 2,
+                "targetObj": 3
             },
             {
                 "position": "4_6",
-                "startObj": 2,
+                "startObj": 1,
                 "targetObj": 7
             },
                         {
                 "position": "5_3",
-                "startObj": 18,
+                "startObj": 17,
                 "targetObj": 7
             }
         ]

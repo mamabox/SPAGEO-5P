@@ -1,0 +1,5 @@
+dateTime,studentID,scene,scenario,trialsCount,trialsOrder,trialsOrderIndex,trialNb,startObjNum,startObj,targetObjNb,targetObj,startRotation,correctRotation,angleToTarget,endRotation,rotationError,totalRotationError,avgRotationError
+20220106_174916,1,5P,9,4,2-1-0-3,0,2,1,les cartons,7,l' affiche,139.2384,243.8058,104.5633,82.34972,161.4561,161.4561,161.4561
+20220106_174916,1,5P,9,4,2-1-0-3,1,1,2,le camion des éboueurs,3,le chevalet,144.6573,311.9152,164.2727,241.5264,70.38873,231.8448,115.9224
+20220106_174916,1,5P,9,4,2-1-0-3,2,0,0,le drapeau,1,les cartons,314.9847,258.6468,57.11387,3.805074,254.8417,486.6865,162.2288
+20220106_174916,1,5P,9,4,2-1-0-3,3,3,17,les bobines,7,l' affiche,47.26324,288.5838,118.6649,132.7711,155.8127,642.4992,160.6248

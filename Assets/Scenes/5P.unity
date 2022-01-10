@@ -621,7 +621,21 @@ MonoBehaviour:
         end: 
         attempts: []
       propObjs: []
+      randomTrialsOrder: 0
       trials: []
+  textDataFR:
+    sessionStart: 
+    sessionEnd: 
+    lastAttempt: 
+    newAttempt: 
+    noAttemptsLeft: 
+    recordingRoute: 
+    waitForInstructions: 
+    routeValid: 
+    routeInvalid: 
+    lastValidation: 
+    noValidaitonsLeft: 
+    validationNotAllowed: 
 --- !u!4 &96087575
 Transform:
   m_ObjectHideFlags: 0

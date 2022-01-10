@@ -236,7 +236,7 @@ saveSessionData.StartSavingData();  //Start saving game session data
                                     }
             else
                 {
-                sc9Manager.StartSavingData();
+                sc9Manager.StartScenario();
             }
         }
         else  //IF the session was paused after a validaton by image
@@ -307,7 +307,7 @@ saveSessionData.StartSavingData();  //Start saving game session data
         }
                 else
         {
-            sc9Manager.StopSavingData();
+            sc9Manager.EndScenario();
         }
     }
 

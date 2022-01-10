@@ -21,6 +21,7 @@ public class Sc9Manager : MonoBehaviour
     //private UIManager uiManager;
     private GameObject player;
     private Sc9Data _sc9Data;
+    private SequenceManager scenarioManager;
 
     //Props
     private GameObject startObj;    // Object the player looks at, at start of trial
@@ -63,14 +64,16 @@ public class Sc9Manager : MonoBehaviour
         //uiManager = FindObjectOfType<GameManager>().GetComponent<UIManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         _sc9Data = gameManager.scenariosData.sc9Data;
+        scenarioManager = gameManager.GetComponent<SequenceManager>();
 
         //Initialise variables
-        currentTrial = 0; 
-        avgRotationError = 0;
-        totalRotError = 0;
+        //currentTrial = 0; 
+        //avgRotationError = 0;
+        //trialsListIndex = 0;
+        //totalRotError = 0;
+        //trialsOrder = ConstructTrialIndex();
+
         trialsCount = gameManager.scenariosData.sc9Data.trials.Count();
-        trialsListIndex = 0;
-        trialsOrder = ConstructTrialIndex();
         CreateNounsPronouns(); //Creates a list of all objects names with their pronoums
 
         //Save data
@@ -82,8 +85,40 @@ public class Sc9Manager : MonoBehaviour
 
     }
 
-    //SAVE DATA
-    
+    public void SetupScenario()
+    {
+        scenarioManager.scenario1Props.SetActive(true); //Make props visible
+        scenarioManager.routeManager.validationEnabled = true; //Validation is possible
+        scenarioManager.attemptsLimited = false;
+        scenarioManager.validationsLimited = false;
+        gameManager.attemptsAllowed = false;
+        gameManager.sessionData.selectedRouteCoord = new List<string>();
+        gameManager.sessionData.routeStart = new List<string> { gameManager.scenariosData.sc9Data.trials[0].position, "" }; //forcing cardinal direciton 
+        gameManager.freezeMovement = true;
+
+        //Initialise variables
+        currentTrial = 0;
+        avgRotationError = 0;
+        trialsListIndex = 0;
+        totalRotError = 0;
+        trialsOrder = ConstructTrialIndex();
+
+        SetupTrial();
+    }
+    // Display the instructions dialog box only if the session has started and not ended
+    public void StartScenario()
+    {
+        StartSavingData();
+        DisplayInstructions();
+    }
+
+    public void EndScenario()
+    {
+        StopSavingData();
+        gameManager.sessionEnded = true;
+        gameManager.uiManager.dialogBoxCheckpoint.gameObject.SetActive(false);
+        scenarioManager.scenario1Props.SetActive(false);
+    }
 
     // Constructs a list with the order in which player goes through trials.Is randomized or not based on setting in scenariosData.json
     private List<int> ConstructTrialIndex()
@@ -105,22 +140,6 @@ public class Sc9Manager : MonoBehaviour
             //Debug.Log("trials unordered:" + string.Join("- ", _listUnordered));
             return _listUnordered;
         }
-    }
-
-    void Start()
-    {
-        SetupTrial(); //Setup the first trial
-    }
-
-    // Display the instructions dialog box only if the session has started and not ended
-    void Update()
-    {       
-        if (gameManager.sessionStarted && !gameManager.sessionEnded)
-            {
-            gameManager.uiManager.dialogBoxCheckpoint.gameObject.SetActive(true);
-        }
-        else
-            gameManager.uiManager.dialogBoxCheckpoint.gameObject.SetActive(false);
     }
 
     //Creates a list of all objects names with their pronoums
@@ -146,8 +165,8 @@ public class Sc9Manager : MonoBehaviour
         //Set the start and target objects
         startObjNum = gameManager.scenariosData.sc9Data.trials[currentTrial].startObj;
         targetObjNum = gameManager.scenariosData.sc9Data.trials[currentTrial].targetObj;
-        startObj = allObjects[startObjNum - 1];
-        targetObj = allObjects[targetObjNum - 1];
+        startObj = allObjects[startObjNum];
+        targetObj = allObjects[targetObjNum];
 
         //Set and save the correct rotation to the target
         player.transform.LookAt(targetObj.transform);
@@ -162,13 +181,19 @@ public class Sc9Manager : MonoBehaviour
         Vector3 targetDir = targetObj.transform.position - player.transform.position;
         angleToTarget = Vector3.Angle(targetDir, player.transform.forward);
 
-        // Display information on debug canvas
-        gameManager.uiManager.ptsotText.text = (_sc9Data.instructions.attempts[0] + (trialsListIndex + 1) +  "(trial #"+ currentTrial + ")\nTrials order: " + string.Join(" - ",trialsOrder) + "\nStart obj: " + objNames[startObjNum-1] + "\nTarget obj: " + objNames[targetObjNum - 1] + "\nStart rot: " + startRotation + "\nAngle to target = " + angleToTarget.ToString() + "\nCorrect rot to target = " + correctRotation);
-
-        //Display instructions in dialog box
-        string attemptInstructionText = _sc9Data.instructions.attempts[0] + (trialsListIndex + 1) + " / " + trialsCount + "|" + _sc9Data.instructions.attempts[1] + objNames[targetObjNum - 1] + _sc9Data.instructions.attempts[2];
-        gameManager.uiManager.OpenCheckpointDialogBox(attemptInstructionText, false);
     }
+    //Display instructions in dialog box
+    private void DisplayInstructions()
+    {
+        gameManager.uiManager.dialogBoxCheckpoint.gameObject.SetActive(true);
+
+        string attemptInstructionText = _sc9Data.instructions.attempts[0] + (trialsListIndex + 1) + " / " + trialsCount + "|" + _sc9Data.instructions.attempts[1] + objNames[targetObjNum] + _sc9Data.instructions.attempts[2];
+        gameManager.uiManager.OpenCheckpointDialogBox(attemptInstructionText, false);
+
+        // Display information on debug canvas
+        gameManager.uiManager.ptsotText.text = (_sc9Data.instructions.attempts[0] + (trialsListIndex + 1) + "\nTrials order: " + string.Join(" - ", trialsOrder) + "\nStart obj: " + objNames[startObjNum] + "\nTarget obj: " + objNames[targetObjNum] + "\nStart rot: " + startRotation + "\nAngle to target = " + angleToTarget.ToString() + "\nCorrect rot to target = " + correctRotation);
+    }
+
     // Called when the player validates their rotation. Makes calculation for the trial, then sets up the next trial or ends the session
     public void ValidateTrial()
     {
@@ -180,13 +205,17 @@ public class Sc9Manager : MonoBehaviour
             trialsListIndex++;
             currentTrial = trialsOrder[trialsListIndex];
             SetupTrial();
+            DisplayInstructions();
         }
         else // IF no trials left, end the session
         {
-            gameManager.sessionEnded = true;
-            StopSavingData();
+            EndScenario();
+            //gameManager.sessionEnded = true;
             gameManager.uiManager.dialogBox.GetComponent<DialogBox>().returnToMenu = true;
             gameManager.uiManager.OpenDialogBox(_sc9Data.instructions.end);
+
+            //StopSavingData();
+
         }
     }
 
@@ -198,10 +227,10 @@ public class Sc9Manager : MonoBehaviour
         endRotation = player.transform.rotation.eulerAngles.y;
         rotationError = Mathf.Abs(endRotation - correctRotation);
         totalRotError += rotationError;
-        avgRotationError = totalRotError / currentTrial;
+        avgRotationError = totalRotError / (trialsListIndex+1);
 
         // Display information on debug canvas
-        gameManager.uiManager.ptsotCalcText.text = (_sc9Data.instructions.attempts[0] + trialsListIndex + " / " + trialsCount + "\nTot error: " + totalRotError + "\nAvg error: " + avgRotationError + "\n\nPrevious correct rot: " + correctRotation + "\nPrevious end rot: " + endRotation + "\nPrevious error: " + rotationError);
+        gameManager.uiManager.ptsotCalcText.text = ("SAVED:" + (trialsListIndex + 1) + " / " + trialsCount + "\nTot error: " + totalRotError + "\nAvg error: " + avgRotationError + "\n\nPrevious correct rot: " + correctRotation + "\nPrevious end rot: " + endRotation + "\nPrevious error: " + rotationError);
     }
     public void StartSavingData()
     {
@@ -237,7 +266,7 @@ public class Sc9Manager : MonoBehaviour
     {
         string sessionData = dateTime + delimiter + gameManager.sessionData.studentIDs[0] + delimiter + SceneManager.GetActiveScene().name + delimiter + gameManager.sessionData.selectedScenario;
         string trialsListData = trialsCount.ToString() + delimiter + string.Join("-", trialsOrder) + delimiter + trialsListIndex; ;
-        string trialData = currentTrial.ToString() + delimiter + startObjNum + delimiter + objNames[startObjNum - 1] + delimiter + targetObjNum + delimiter + objNames[targetObjNum - 1];
+        string trialData = currentTrial.ToString() + delimiter + startObjNum + delimiter + objNames[startObjNum] + delimiter + targetObjNum + delimiter + objNames[targetObjNum];
         string playerData = startRotation.ToString() + delimiter + correctRotation + delimiter + angleToTarget + delimiter + endRotation;
         string calculationsData = rotationError.ToString() + delimiter + totalRotError.ToString() + delimiter + avgRotationError.ToString();
 

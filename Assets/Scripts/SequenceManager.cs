@@ -8,7 +8,7 @@ public class SequenceManager : MonoBehaviour
 {
     public int selectedScenario;        // Sequence selected from Menu
     //public int selectedRoute;
-    private RouteManager routeManager;
+    public RouteManager routeManager;
     private CheckpointManager checkpointManager;
     private IntersectionManager intersectionManager;
     private GameObject player;
@@ -24,6 +24,9 @@ public class SequenceManager : MonoBehaviour
     //private int allowedValidations;
     //private int currentAttempt;
     //private int currentValidation;
+
+    //Scenarios managers
+    private Sc9Manager sc9Manager;
 
     //Scenario settings
     public bool attemptsLimited = false;
@@ -68,10 +71,11 @@ public class SequenceManager : MonoBehaviour
         hotspotManager = FindObjectOfType<GameManager>().GetComponent<HotspotManager>();
         uIManager = FindObjectOfType<GameManager>().GetComponent<UIManager>();
         limiterManager = FindObjectOfType<GameManager>().GetComponent<LimiterManager>();
+        sc9Manager = GameObject.Find("ScenariosManager").GetComponent<Sc9Manager>();
 
         // Import data session from GlobalControl
         //selectedScenario = GlobalControl.instance.activeSequence;
-       // selectedRoute = GlobalControl.instance.activeRoute;
+        // selectedRoute = GlobalControl.instance.activeRoute;
         //sessionData = GlobalControl.instance.sessionData;   // isGroupSession, groupID, studentIDs, isSender //TODO: Move to gameManager
 
         importPath = Path.Combine(Directory.GetCurrentDirectory(), "Assets/Media/Text/");
@@ -136,7 +140,8 @@ public class SequenceManager : MonoBehaviour
         }
         else if (gameManager.sessionData.selectedScenario == 9)
         {
-            Scenario9();
+            //Scenario9();
+            sc9Manager.SetupScenario();
         }
 
         //2. SETUP THE PLAYER
@@ -179,6 +184,7 @@ public class SequenceManager : MonoBehaviour
     //SCENARIO 2 - WORK IN PAIR: SENDER/RECEIVER
     private void Scenario2()
     {
+        scenario1Props.SetActive(false);
         activeScenario = scenario2Data;
         gameManager.sessionData.selectedRouteCoord = scenario2Data.routes.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList();
         //gameManager.sessionData.selectedRouteCoord = routeManager.selectedRouteCoord;
@@ -203,6 +209,7 @@ public class SequenceManager : MonoBehaviour
 
     private void Scenario3()
     {
+        scenario1Props.SetActive(false);
         gameManager.attemptsAllowed = false;
         activeScenario = scenario3Data; //Sets as active scenario
         gameManager.sessionData.selectedRouteCoord = scenario3Data.routes.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList(); //Sets the route selected in menu as the session's route
@@ -238,6 +245,7 @@ public class SequenceManager : MonoBehaviour
     //SCENARIO 4 - RETRACE AND VALIDATE A ROUTE PREVIOUSLY TAKEN + DISPLAY LINES
     private void Scenario4()
     {
+        scenario1Props.SetActive(false);
         activeScenario = scenario4Data; //Sets as active scenario
         gameManager.sessionData.selectedRouteCoord = scenario4Data.routes.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList(); //Sets the route selected in menu as the session's route
         gameManager.sessionData.routeStart = routeManager.getRouteStart(gameManager.sessionData.selectedRouteCoord);   //sets at what position the player should start
@@ -268,6 +276,7 @@ public class SequenceManager : MonoBehaviour
     //SCENARIO 7 - RETRACE AND VALIDATE A ROUTE PREVIOUSLY TAKEN
     private void Scenario7()
     {
+        scenario1Props.SetActive(false);
         activeScenario = scenario7Data; //Sets as active scenario
         gameManager.sessionData.selectedRouteCoord = scenario7Data.routes.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList(); //Sets the route selected in menu as the session's route
         gameManager.sessionData.routeStart = routeManager.getRouteStart(gameManager.sessionData.selectedRouteCoord);   //sets at what position the player should start
@@ -295,6 +304,7 @@ public class SequenceManager : MonoBehaviour
     //SCENARIO 5 - OPEN WORLD WITH OPTION TO DISPLAY ROUTES
     private void Scenario5()
     {
+        scenario1Props.SetActive(false);
         routeManager.validationEnabled = false; //No validation possible
 
         if (gameManager.sessionData.selectedRoute == 0) //First route selected just go to start point and draw nothing
@@ -320,6 +330,7 @@ public class SequenceManager : MonoBehaviour
     //SCENARIO 6 - GENERATE BARRIERS
     private void Scenario6()
     {
+        scenario1Props.SetActive(false);
         routeManager.validationEnabled = false; //No validation possible
 
         //gameManager.sessionData.routeStart = routeManager.SplitCoordinates("5_5W"); //Manual start
@@ -349,7 +360,7 @@ public class SequenceManager : MonoBehaviour
         gameManager.sessionData.routeStart = new List<string> { gameManager.scenariosData.sc9Data.trials[0].position, "" }; //forcing cardinal direciton 
         gameManager.freezeMovement = true;
 
-
+        sc9Manager.SetupTrial();
     }
 
     //PULLS DATA FROM LIST<STRING> AND STORES IT IN STRUCTURE (SCENARIO 1)
@@ -475,7 +486,7 @@ public class SequenceManager : MonoBehaviour
         checkpointManager.checkpointsInstructionsS6 = ImportText("Checkpointsinstructions-S6.txt");
         hotspotManager.hotspotTextS6 = ImportText("Hotspots-S6.txt");
 
-        //Scenarion 2 - 6
+        //Scenarion 2 - 7
         scenario2TextFile = ImportText("Scenario2.txt");
         scenario3TextFile = ImportText("Scenario3.txt");
         scenario4TextFile = ImportText("Scenario4.txt");
