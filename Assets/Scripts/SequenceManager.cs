@@ -72,6 +72,7 @@ public class SequenceManager : MonoBehaviour
         hotspotManager = FindObjectOfType<GameManager>().GetComponent<HotspotManager>();
         uIManager = FindObjectOfType<GameManager>().GetComponent<UIManager>();
         limiterManager = FindObjectOfType<GameManager>().GetComponent<LimiterManager>();
+        sc8Manager = GameObject.Find("ScenariosManager").GetComponent<Sc8Manager>();
         sc9Manager = GameObject.Find("ScenariosManager").GetComponent<Sc9Manager>();
 
         // Import data session from GlobalControl

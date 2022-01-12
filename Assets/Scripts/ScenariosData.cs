@@ -125,5 +125,5 @@ public class Trial
 public class Coordinate
 {
     public string coord;
-    public char cardDir;
+    public string cardDir;
 }

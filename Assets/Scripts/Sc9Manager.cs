@@ -67,13 +67,6 @@ public class Sc9Manager : MonoBehaviour
         _sc9Data = gameManager.scenariosData.sc9Data;
         scenarioManager = gameManager.GetComponent<SequenceManager>();
 
-        //Initialise variables
-        //currentTrial = 0; 
-        //avgRotationError = 0;
-        //trialsListIndex = 0;
-        //totalRotError = 0;
-        //trialsOrder = ConstructTrialIndex();
-
         trialsCount = gameManager.scenariosData.sc9Data.trials.Count();
         CreateNounsPronouns(); //Creates a list of all objects names with their pronoums
 
