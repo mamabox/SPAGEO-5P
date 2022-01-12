@@ -26,6 +26,7 @@ public class SequenceManager : MonoBehaviour
     //private int currentValidation;
 
     //Scenarios managers
+    private Sc8Manager sc8Manager;
     private Sc9Manager sc9Manager;
 
     //Scenario settings
@@ -136,7 +137,7 @@ public class SequenceManager : MonoBehaviour
         }
         else if (gameManager.sessionData.selectedScenario == 8)
         {
-            //Scenario8();
+            sc8Manager.SetupScenario();
         }
         else if (gameManager.sessionData.selectedScenario == 9)
         {
@@ -273,33 +274,6 @@ public class SequenceManager : MonoBehaviour
         }
     }
 
-    //SCENARIO 7 - RETRACE AND VALIDATE A ROUTE PREVIOUSLY TAKEN
-    private void Scenario7()
-    {
-        scenario1Props.SetActive(false);
-        activeScenario = scenario7Data; //Sets as active scenario
-        gameManager.sessionData.selectedRouteCoord = scenario7Data.routes.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList(); //Sets the route selected in menu as the session's route
-        gameManager.sessionData.routeStart = routeManager.getRouteStart(gameManager.sessionData.selectedRouteCoord);   //sets at what position the player should start
-        gameManager.sessionData.selectedRouteDir = intersectionManager.ConvertRouteToDirection(gameManager.sessionData.selectedRouteCoord);
-        Debug.Log(string.Join(",", gameManager.sessionData.selectedRouteDir));
-
-        SetAttemptsValidationLimits();
-        //gameManager.attemptCount = 0;
-
-        if (!gameManager.sessionData.sessionPaused)
-        {
-            routeManager.validationEnabled = true;
-            gameManager.attemptsAllowed = true;
-        }
-
-        else if (gameManager.sessionData.sessionPaused)   //if player has already done the validation by image
-        {
-            //gameManager.validationCount++;
-            routeManager.validationEnabled = false;
-            gameManager.attemptsAllowed = false;
-            //attemptsLimited = false;
-        }
-    }
 
     //SCENARIO 5 - OPEN WORLD WITH OPTION TO DISPLAY ROUTES
     private void Scenario5()
@@ -346,6 +320,34 @@ public class SequenceManager : MonoBehaviour
         //limiterManager.GenerateLimiters(scenario6Data.limiters);
         thisLimiter.RemoveAt(0);
         limiterManager.GenerateLimiters(thisLimiter);
+    }
+
+    //SCENARIO 7 - RETRACE AND VALIDATE A ROUTE PREVIOUSLY TAKEN
+    private void Scenario7()
+    {
+        scenario1Props.SetActive(false);
+        activeScenario = scenario7Data; //Sets as active scenario
+        gameManager.sessionData.selectedRouteCoord = scenario7Data.routes.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList(); //Sets the route selected in menu as the session's route
+        gameManager.sessionData.routeStart = routeManager.getRouteStart(gameManager.sessionData.selectedRouteCoord);   //sets at what position the player should start
+        gameManager.sessionData.selectedRouteDir = intersectionManager.ConvertRouteToDirection(gameManager.sessionData.selectedRouteCoord);
+        Debug.Log(string.Join(",", gameManager.sessionData.selectedRouteDir));
+
+        SetAttemptsValidationLimits();
+        //gameManager.attemptCount = 0;
+
+        if (!gameManager.sessionData.sessionPaused)
+        {
+            routeManager.validationEnabled = true;
+            gameManager.attemptsAllowed = true;
+        }
+
+        else if (gameManager.sessionData.sessionPaused)   //if player has already done the validation by image
+        {
+            //gameManager.validationCount++;
+            routeManager.validationEnabled = false;
+            gameManager.attemptsAllowed = false;
+            //attemptsLimited = false;
+        }
     }
 
     //SCENARIO 9 - TACHE DE POINTAGE

@@ -54,6 +54,11 @@ public class Sc8Data
     public int scenarioID;
     public string description;
     public string dropdownMenuText;
+    public Instructions instructions;
+    public Coordinate startCoord;
+    public List<string> checkpoints;
+    public List<string> routeSegments;
+
 }
 
 [System.Serializable]
@@ -114,4 +119,11 @@ public class Trial
     public int startObj;
     public int targetObj;
 
+}
+
+[System.Serializable]
+public class Coordinate
+{
+    public string coord;
+    public char cardDir;
 }
