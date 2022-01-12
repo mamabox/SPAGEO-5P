@@ -88,21 +88,24 @@ public class Sc9Manager : MonoBehaviour
 
     public void SetupScenario()
     {
-        scenarioManager.scenario1Props.SetActive(true); //Make props visible
-        scenarioManager.routeManager.validationEnabled = true; //Validation is possible
-        scenarioManager.attemptsLimited = false;
-        scenarioManager.validationsLimited = false;
-        gameManager.attemptsAllowed = false;
-        gameManager.sessionData.selectedRouteCoord = new List<string>();
-        gameManager.sessionData.routeStart = new List<string> { gameManager.scenariosData.sc9Data.trials[0].position, "" }; //forcing cardinal direciton 
-        gameManager.freezeMovement = true;
-
         //Initialise variables
         currentTrial = 0;
         avgRotationError = 0;
         trialsListIndex = 0;
         totalRotError = 0;
         trialsOrder = ConstructTrialIndex();
+        int _firstTrial = trialsOrder[trialsListIndex];
+
+        scenarioManager.scenario1Props.SetActive(true); //Make props visible
+        scenarioManager.routeManager.validationEnabled = true; //Validation is possible
+        scenarioManager.attemptsLimited = false;
+        scenarioManager.validationsLimited = false;
+        gameManager.attemptsAllowed = false;
+        gameManager.sessionData.selectedRouteCoord = new List<string>();
+        gameManager.sessionData.routeStart = new List<string> { gameManager.scenariosData.sc9Data.trials[_firstTrial].position, "" }; //forcing cardinal direciton 
+        gameManager.freezeMovement = true;
+
+
 
         SetupTrial();
         
@@ -136,14 +139,14 @@ public class Sc9Manager : MonoBehaviour
         }
         if (!_sc9Data.randomTrialsOrder)    // IF scenario data is set to NOT random, returns ordered list
         {
-            //Debug.Log("trials ordered list:" + string.Join("- ", _listOrdered));
+            Debug.Log("trials ordered list:" + string.Join("- ", _listOrdered));
             return _listOrdered;
         }
         else // IF scenario data is set to random, returns unordered list
         {
             var rnd = new System.Random();
             List<int> _listUnordered = _listOrdered.OrderBy(ContextMenuItemAttribute => rnd.Next()).ToList();
-            //Debug.Log("trials unordered:" + string.Join("- ", _listUnordered));
+            Debug.Log("trials unordered:" + string.Join("- ", _listUnordered));
             return _listUnordered;
         }
     }
@@ -164,7 +167,7 @@ public class Sc9Manager : MonoBehaviour
     {
         currentTrial = trialsOrder[trialsListIndex];
         //Retrieve start coordinates and move the player there
-        //Debug.Log("Start coordinate is: " + gameManager.scenariosData.sc9Data.trials[currentTrial].position);
+        Debug.Log("Start coordinate is: " + gameManager.scenariosData.sc9Data.trials[currentTrial].position);
         string startCoordStr = gameManager.scenariosData.sc9Data.trials[currentTrial].position;
         gameManager.GetComponent<IntersectionManager>().GotoCoord(startCoordStr,"X");
 
@@ -173,6 +176,7 @@ public class Sc9Manager : MonoBehaviour
         targetObjNum = gameManager.scenariosData.sc9Data.trials[currentTrial].targetObj;
         startObj = allObjects[startObjNum];
         targetObj = allObjects[targetObjNum];
+        Debug.Log("SETUPTRIAL(): " + "Start obj: " + startObjNum + "-" + objNames[startObjNum] + targetObjNum + "-" + "Target obj: " + objNames[targetObjNum]);
 
         //Set and save the correct rotation to the target
         player.transform.LookAt(targetObj.transform);

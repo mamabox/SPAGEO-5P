@@ -99,7 +99,7 @@ public class MainMenu : MonoBehaviour
         }
         else if (scenarioID == 9)
         {
-            routesToAdd.Add("v1.2");
+            routesToAdd.Add("v1.3");
         }
         else // Scenarios 2 - 5
         {
