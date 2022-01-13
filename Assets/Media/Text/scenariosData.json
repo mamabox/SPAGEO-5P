@@ -123,36 +123,41 @@
             "start": "Ton objectif est de blah blah blah",
             "end": "Bien joué, tu as terminé.|Appui sur le bouton (B) pour revenir au menu principal",
             "attempts": [
-                "Bien joué, tu es au bon endroit.|Appui sur le bouton (B) pour continuer vers le prochain checkpoint.",
+                "Bien joué, tu es au bon endroit.|Appui sur le bouton (B) et continu vers le prochain checkpoint.",
                 "Ce n’est pas ça, tu peux recommencer, regarde bien les points de repères autour de toi.|Retour au dernier check point.",
-                "Ce n’est pas ça, tu peux recommencer, dessines le trajet à suivre sur ta carte|.Retour au dernier check point.",
-                "Ce n’est pas ça, voici un chemin possible|Dernière tentative autorisée."
+                "Ce n’est pas ça, tu peux recommencer, dessines le trajet à suivre sur ta carte.|Retour au dernier check point.",
+                "Ce n’est pas ça, voici un chemin possible."
             ]
         },
         "routes": [
             {
                 "startCoord": {
-                    "coord": "1_1",
-                    "cardDir": "E"
+                    "coord": "4.5_1",
+                    "cardDir": "N"
                 },
                 "checkpoints": [
                     {
-                        "coord": "2_3",
+                        "coord": "2_4",
+                        "cardDir": "W"
+                    },
+                    {
+                        "coord": "3_6",
                         "cardDir": "E"
                     },
                     {
-                        "coord": "4_4",
-                        "cardDir": "N"
+                        "coord": "5_3",
+                        "cardDir": "S"
                     },
                     {
-                        "coord": "3_5",
-                        "cardDir": "W"
+                        "coord": "9_-1",
+                        "cardDir": "X"
                     }
                 ],
                 "routeSegments": [
-                    "1_1,2_1,2_2,2_3",
-                    "2_3,3_3,4_3,4_4",
-                    "4_4,4_5,3_5"
+                    "4.5_1,4_1,4_2,4_3,4_4,3_4,2_4",
+                    "2_4,2_5,2_6,3_6",
+                    "3_6,4_6,5_6,5_5,5_4,5_3",
+                    "5_3,6_3,7_3,8_3,9_3,9_2,9_1,9_0,9_-1"
                 ]
             },
             {
@@ -162,22 +167,22 @@
                 },
                 "checkpoints": [
                     {
-                        "coord": "2_3",
-                        "cardDir": "E"
-                    },
-                    {
-                        "coord": "4_4",
+                        "coord": "2_2",
                         "cardDir": "N"
                     },
                     {
-                        "coord": "3_5",
-                        "cardDir": "W"
+                        "coord": "3_2",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "3_1",
+                        "cardDir": "X"
                     }
                 ],
                 "routeSegments": [
-                    "1_1,2_1,2_2,2_3",
-                    "2_3,3_3,4_3,4_4",
-                    "4_4,4_5,3_5"
+                    "1_1,2_1,2_2",
+                    "2_2,2_3,3_3,3_2",
+                    "3_2,3_1"
                 ]
             }
         ]

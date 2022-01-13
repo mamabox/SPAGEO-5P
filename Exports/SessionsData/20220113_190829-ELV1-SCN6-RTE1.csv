@@ -1,0 +1,4 @@
+sessionTime,gameIsPause,sessionDistance,validationCount,attemptCount,attemptTime,attemptDistance,isGroupSession,groupID,studentIDs,scenario,selectedRoute,isSender,routeStart,selectedRouteCoord,posX,posZ,rotation,time,scene,routeIsValid,routeEndReached,routeErrorAt,routeLength,routeCoord,isOnCheckpoint,lastCheckpoint,isOnHotspot,lastHotspot
+00:00,False,0.00,0,1,00:00,0.00,False,,1,6,1,True,5_2W,,175.00,70.00,270.00,00:30,5P,False,False,0,1,5_2,False,0,False,0
+00:01,False,0.00,0,1,00:01,0.00,False,,1,6,1,True,5_2W,,175.00,70.00,270.00,00:31,5P,False,False,0,1,5_2,False,0,False,0
+00:01,False,0.00,0,1,00:01,0.00,False,,1,6,1,True,5_2W,,175.00,70.00,270.00,00:31,5P,False,False,0,1,5_2,False,0,False,0

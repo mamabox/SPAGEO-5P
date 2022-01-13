@@ -95,7 +95,10 @@ public class MainMenu : MonoBehaviour
         }
         else if (scenarioID == 8)
         {
-            routesToAdd.Add("WIP");
+            for (int i = 0; i < routeCount; i++)
+            {
+                routesToAdd.Add("Route" + scenarioID + "-" + (i + 1));
+            }
         }
         else if (scenarioID == 9)
         {
@@ -173,7 +176,7 @@ public class MainMenu : MonoBehaviour
         else if (selection == 7)
         {
             menuScenarioSelection = 8;
-            PopulateDropdownRoutes(routeDropDown, 8, 0);    // Trigger scenario 6 with no added routes
+            PopulateDropdownRoutes(routeDropDown, 8, 2);    // Trigger scenario 6 with no added routes
         }
         else if (selection == 8)
         {
