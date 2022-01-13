@@ -73,6 +73,15 @@ public class Sc9Data
     public bool randomTrialsOrder;
     public List<Trial> trials;
 }
+
+[System.Serializable]
+public class Sc8Route
+{
+    public Coordinate startCoord;
+    public List<string> checkpoints;
+    public List<string> routeSegments;
+
+}
 public class ScInfo
 {
     public int scenarioID;
