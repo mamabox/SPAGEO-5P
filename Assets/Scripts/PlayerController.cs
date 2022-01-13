@@ -396,7 +396,7 @@ public class PlayerController : MonoBehaviour
         else if (other.tag == "Checkpoint")
         {
             if (other.GetComponent<Checkpoint>().scenario == 8)
-                scenariosManager.GetComponent<Sc8Manager>().OnCheckpointEnter(other);
+                scenariosManager.GetComponent<Sc8Manager>().OnCheckpointExit(other);
             else
                 checkpointManager.OnCheckpointExit(other);
         }

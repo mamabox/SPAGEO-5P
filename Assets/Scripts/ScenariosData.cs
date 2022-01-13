@@ -55,9 +55,7 @@ public class Sc8Data
     public string description;
     public string dropdownMenuText;
     public Instructions instructions;
-    public Coordinate startCoord;
-    public List<string> checkpoints;
-    public List<string> routeSegments;
+    public List<Sc8Route> routes;
 
 }
 
@@ -78,7 +76,7 @@ public class Sc9Data
 public class Sc8Route
 {
     public Coordinate startCoord;
-    public List<string> checkpoints;
+    public List<Coordinate> checkpoints;
     public List<string> routeSegments;
 
 }
@@ -101,7 +99,7 @@ public class PropObj
 public class Route
 {
     public string startCoord;
-    public char startCardDir;
+    public string startCardDir;
     public string routeCoord;
 }
 

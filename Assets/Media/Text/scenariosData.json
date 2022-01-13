@@ -123,20 +123,63 @@
             "start": "Ton objectif est de blah blah blah",
             "end": "Bien joué, tu as terminé.|Appui sur le bouton (B) pour revenir au menu principal",
             "attempts": [
+                "Bien joué, tu es au bon endroit.|Appui sur le bouton (B) pour continuer vers le prochain checkpoint.",
                 "Ce n’est pas ça, tu peux recommencer, regarde bien les points de repères autour de toi.|Retour au dernier check point.",
                 "Ce n’est pas ça, tu peux recommencer, dessines le trajet à suivre sur ta carte|.Retour au dernier check point.",
                 "Ce n’est pas ça, voici un chemin possible|Dernière tentative autorisée."
             ]
         },
-        "startCoord": {
-            "coord": "1_1",
-            "cardDir": "E"
-        },
-        "checkpoints": [ "2_3E", "4_4N", "3_5W" ],
-        "routeSegments": [
-            "1_1,2_1,2_2,2_3",
-            "2_3,3_3,4_3,4_4",
-            "4_4,4_5,3_5"
+        "routes": [
+            {
+                "startCoord": {
+                    "coord": "1_1",
+                    "cardDir": "E"
+                },
+                "checkpoints": [
+                    {
+                        "coord": "2_3",
+                        "cardDir": "E"
+                    },
+                    {
+                        "coord": "4_4",
+                        "cardDir": "N"
+                    },
+                    {
+                        "coord": "3_5",
+                        "cardDir": "W"
+                    }
+                ],
+                "routeSegments": [
+                    "1_1,2_1,2_2,2_3",
+                    "2_3,3_3,4_3,4_4",
+                    "4_4,4_5,3_5"
+                ]
+            },
+            {
+                "startCoord": {
+                    "coord": "1_1",
+                    "cardDir": "E"
+                },
+                "checkpoints": [
+                    {
+                        "coord": "2_3",
+                        "cardDir": "E"
+                    },
+                    {
+                        "coord": "4_4",
+                        "cardDir": "N"
+                    },
+                    {
+                        "coord": "3_5",
+                        "cardDir": "W"
+                    }
+                ],
+                "routeSegments": [
+                    "1_1,2_1,2_2,2_3",
+                    "2_3,3_3,4_3,4_4",
+                    "4_4,4_5,3_5"
+                ]
+            }
         ]
     },
     "sc9Data": {
