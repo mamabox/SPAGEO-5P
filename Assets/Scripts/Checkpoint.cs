@@ -17,7 +17,9 @@ public class Checkpoint : MonoBehaviour
     public string coordString;  // Intersection's coordinate in "x_y" format
     //public float[] coordinates;  // Intersection's coordinate in [x,y] format
     public int ID;
+    public int scenario; //Added for Sc8
     public bool isCollected;
+    public string carDir; // Cardinal direction: if the player is moved to this checkpoint, rotate them towards this direction. Using string, not char in case we use NE, NW, etc ... in the future
 
     // Start is called before the first frame update
     void Awake()

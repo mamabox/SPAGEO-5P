@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private SaveSessionData saveSessionData;
     private EventSystem eventSystem;
     private LimiterManager limiterMansger;
+    private Sc8Manager sc8Manager;
     private Sc9Manager sc9Manager;
     //public Canvas canvas;
 
@@ -89,7 +90,8 @@ public class GameManager : MonoBehaviour
         checkpointManager = GetComponent<CheckpointManager>();
         saveSessionData = GetComponent<SaveSessionData>();
         limiterMansger = GetComponent<LimiterManager>();
-        sc9Manager = GameObject.Find("ScenariosManager"). GetComponent<Sc9Manager>();
+        sc8Manager = GameObject.Find("ScenariosManager"). GetComponent<Sc8Manager>();
+        sc9Manager = GameObject.Find("ScenariosManager").GetComponent<Sc9Manager>();
 
         overideOnIntersectionExit = false;
 
@@ -506,6 +508,11 @@ saveSessionData.StartSavingData();  //Start saving game session data
             else if (sessionData.selectedScenario == 5)  //Scenario 5 (no validation)
             {
                 uiManager.routeValidationText.text = "No validation possible";
+            }
+            else if (sessionData.selectedScenario == 8)  //Scenario 5 (no validation)
+            {
+                sc8Manager.CheckpointValidation();
+                //uiManager.routeValidationText.text = "No validation possible";
             }
             //Scenario 9
             else if (sessionData.selectedScenario == 9)  //Scenario 5 (no validation)

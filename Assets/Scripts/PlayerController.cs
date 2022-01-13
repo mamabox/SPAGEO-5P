@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private HotspotManager hotspotManager;
     private SaveSessionData saveSessionData;
     public Collider lastIntersectionEnteredCollider;
+    private GameObject scenariosManager;
 
     public Vector3 startPosition; //Used to reset to initial position
     public Vector3 startRotation; //User to reset to initial rotatin
@@ -76,6 +77,7 @@ public class PlayerController : MonoBehaviour
         checkpointManager = FindObjectOfType<GameManager>().GetComponent<CheckpointManager>();
         hotspotManager = FindObjectOfType<GameManager>().GetComponent<HotspotManager>();
         saveSessionData = FindObjectOfType<GameManager>().GetComponent<SaveSessionData>();
+        scenariosManager = GameObject.Find("ScenariosManager");
     }
 
     public void InitialisePlayer()
@@ -372,7 +374,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "Checkpoint")
         {
-            checkpointManager.OnCheckpointEnter(other);
+            if (other.GetComponent<Checkpoint>().scenario == 8)
+                scenariosManager.GetComponent<Sc8Manager>().OnCheckpointEnter(other);
+            else
+                checkpointManager.OnCheckpointEnter(other);
         }
         else if (other.tag == "Hotspot")
         {
@@ -390,7 +395,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "Checkpoint")
         {
-            checkpointManager.OnCheckpointExit(other);
+            if (other.GetComponent<Checkpoint>().scenario == 8)
+                scenariosManager.GetComponent<Sc8Manager>().OnCheckpointEnter(other);
+            else
+                checkpointManager.OnCheckpointExit(other);
         }
         else if (other.tag == "Hotspot")
         {

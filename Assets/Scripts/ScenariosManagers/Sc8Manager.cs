@@ -13,14 +13,23 @@ public class Sc8Manager : MonoBehaviour
     private SequenceManager scenarioManager;
     private CheckpointManager checkpointManager;
     private RouteManager routeManager;
+    //private IntersectionManager intersectionManager;
 
+    //Checkpoints
+    private GameObject checkpointPrefab;
     private int checkpointIndex;
+    
+    private int lastCheckpointCollected; // ID of the checkpoint that can be validated next. If  = 0 then no checkpoint has been collected
+    private bool onCheckpoint;  //Is player on a checkpoint now?
+    private GameObject lastCheckpoint; // Last checkpoint entered
+    
 
 
     // Start is called before the first frame update
     void Awake()
     {
         checkpointIndex = 0;
+        lastCheckpointCollected = 0;
 
         //Game objects and classes
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
@@ -30,6 +39,7 @@ public class Sc8Manager : MonoBehaviour
         scenarioManager = gameManager.GetComponent<SequenceManager>();
         checkpointManager = gameManager.GetComponent<CheckpointManager>();
         routeManager = gameManager.GetComponent<RouteManager>();
+        //intersectionManager = gameManager.GetComponent<InterserctionManager>();
     }
 
     // Start is called before the first frame update
@@ -57,7 +67,7 @@ public class Sc8Manager : MonoBehaviour
         // (1) Read data from scenariosData.json
         // ( ) Generate checkpoints
         //allCheckpoints = new List<string>(_sc8Data.checkpoints);
-        checkpointManager.GenerateCheckpoints(_sc8Data.checkpoints);
+        GenerateCheckpoints(_sc8Data.checkpoints);
 
         // Draw lines
         for (int i = 0; i < _sc8Data.routeSegments.Count(); i++)
@@ -76,4 +86,61 @@ public class Sc8Manager : MonoBehaviour
     {
 
     }
+    // WHEN PLAYER ENTERS WIH CHECKPOINT
+    public void OnCheckpointEnter(Collider other)
+    {
+        onCheckpoint = true;
+        lastCheckpoint = other.gameObject;    // Sets this checkpoint as the last checkpoint entered
+    }
+
+    // WHEN PLAYER EXITS CHECKPOINT
+    public void OnCheckpointExit(Collider other)
+    {
+        onCheckpoint = false;
+    }
+    private void GenerateCheckpoints(List<string> checkpoints)
+    {
+        string[] coordArray;
+        Debug.Log("GenerateCheckpoint - checkpoints: " + string.Join(",", checkpoints));
+        for (int i = 0; i < checkpoints.Count(); i++)
+        {
+            string coordNoDirection = checkpoints[i].Remove(checkpoints[i].Length - 1); //Delete the last character which refers to  direction. If players are moved to previous checkpoint, direction is the player's orientation
+            coordArray = coordNoDirection.Split(char.Parse(routeManager.xyCoordSeparator));      //stores the coordinates x and y in an array
+            //coordArray[1].Remove(coordArray[1].Length-1);   //Delete the last character of the array which is direction
+            var newCheckpoint = Instantiate(checkpointPrefab, new Vector3(float.Parse(coordArray[0]) * gameManager.blockSize, 0.02f, float.Parse(coordArray[1]) * gameManager.blockSize), checkpointPrefab.transform.rotation);    //instantiate the checkpoint right above the ground (0.02f)
+            newCheckpoint.GetComponent<Checkpoint>().coordString = checkpoints[i];  //store the coordinates as a string in the instance
+            newCheckpoint.GetComponent<Checkpoint>().ID = i + 1;    //stores the checkpoint ID(int) in the instance
+            newCheckpoint.GetComponent<Checkpoint>().scenario = 8;  // sets the scenario ID
+        }
+    }
+
+    public void CheckpointValidation()
+    {
+        if (gameManager.sessionStarted)
+
+        {
+            if (onCheckpoint)   //If player presses the validaiton button while on a checkpoint
+            {
+                if (lastCheckpointCollected == 0) // IF no checkpoint has been collecte, return to start
+                { }
+                else
+                {
+                    // If at least one checkpoint was previously collected, return the last collected checkpoint
+                }
+                {
+
+                }
+            }
+            else // If the player presses the validation button while not on a checkpoint
+            {
+                MovePlayerBack();
+            }
+        }
+    }
+
+    private void MovePlayerBack()
+    {
+
+    }
+
 }
