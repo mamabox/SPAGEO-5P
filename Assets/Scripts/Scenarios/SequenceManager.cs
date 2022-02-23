@@ -131,6 +131,7 @@ public class SequenceManager : MonoBehaviour
         else if (gameManager.sessionData.selectedScenario == 6)
         {
             Scenario6();
+            //sc6Manager.SetupScenario();
         }
         else if (gameManager.sessionData.selectedScenario == 7)
         {

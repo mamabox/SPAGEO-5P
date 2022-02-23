@@ -102,27 +102,182 @@
         "dropdownMenuText": "Barrières",
         "attemptsNb": 0,
         "validationNb": 0,
-        "barriers": [
-          {
-            "startCoord": "0_4.5",
-            "startCardDir": "E",
-            "barrierCoord": "0_5S,1_5S,2_5S,3_4W,3_3W,2_3S,1_2N,0_2N"
-          },
-          {
-            "startCoord": "2_0.5",
-            "startCardDir": "E",
-            "barrierCoord": "2_0W,2_1W,2_2W,2_3W,2_3N,3_3N,4_3N,4_3E,4.2_2E,4_1E,4_0E,4_0S"
-          },
-          {
-            "startCoord": "1_3.5",
-            "startCardDir": "W",
-            "barrierCoord": "0_5S,1_5S,2_5S,3_4W,3_3W,2_3S,1_2N,0_2N"
-          },
-          {
-            "startCoord": "3_4",
-            "startCardDir": "N",
-            "barrierCoord": "7_3E,7_2E,7_1E,7_0E,7_0S,6_0S,5_0S,4_0S"
-          }
+        "barrierRoutes": [
+            {
+                "startCoord": {
+                    "coord": "0_4.5",
+                    "cardDir": "E"
+                },
+                "barriersCoord": [
+                    {
+                        "coord": "0_5",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "1_5",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "2_5",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "3_4",
+                        "cardDir": "W"
+                    },
+                    {
+                        "coord": "3_3",
+                        "cardDir": "W"
+                    },
+                    {
+                        "coord": "2_3",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "1_2",
+                        "cardDir": "N"
+                    },
+                    {
+                        "coord": "0_2",
+                        "cardDir": "N"
+                    }
+                ]
+
+            },
+            {
+                "startCoord": {
+                    "coord": "2_0.5",
+                    "cardDir": "E"
+                },
+                "barriersCoord": [
+                    {
+                        "coord": "2_0",
+                        "cardDir": "W"
+                    },
+                    {
+                        "coord": "2_1",
+                        "cardDir": "W"
+                    },
+                    {
+                        "coord": "2_2",
+                        "cardDir": "W"
+                    },
+                    {
+                        "coord": "2_3",
+                        "cardDir": "W"
+                    },
+                    {
+                        "coord": "2_3",
+                        "cardDir": "N"
+                    },
+                    {
+                        "coord": "3_3",
+                        "cardDir": "N"
+                    },
+                    {
+                        "coord": "4_3",
+                        "cardDir": "N"
+                    },
+                    {
+                        "coord": "4_2",
+                        "cardDir": "E"
+                    },
+                    {
+                        "coord": "4_1",
+                        "cardDir": "E"
+                    },
+                    {
+                        "coord": "4_0",
+                        "cardDir": "E"
+                    },
+                    {
+                        "coord": "4_0",
+                        "cardDir": "S"
+                    }
+                ]
+            },
+            {
+                "startCoord": {
+                    "coord": "1_3.5",
+                    "cardDir": "W"
+                },
+                "barriersCoord": [
+                    {
+                        "coord": "0_5",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "1_5",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "2_5",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "3_4",
+                        "cardDir": "W"
+                    },
+                    {
+                        "coord": "3_3",
+                        "cardDir": "W"
+                    },
+                    {
+                        "coord": "2_3",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "1_2",
+                        "cardDir": "N"
+                    },
+                    {
+                        "coord": "0_2",
+                        "cardDir": "N"
+                    }
+                ]
+
+            },
+            {
+                "startCoord": {
+                    "coord": "3_4",
+                    "cardDir": "N"
+                },
+                "barriersCoord": [
+                    {
+                        "coord": "7_3",
+                        "cardDir": "E"
+                    },
+                    {
+                        "coord": "7_2",
+                        "cardDir": "E"
+                    },
+                    {
+                        "coord": "7_1",
+                        "cardDir": "E"
+                    },
+                    {
+                        "coord": "7_0",
+                        "cardDir": "E"
+                    },
+                    {
+                        "coord": "7_0",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "6_0",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "5_0",
+                        "cardDir": "S"
+                    },
+                    {
+                        "coord": "4_0",
+                        "cardDir": "S"
+                    }
+                ]
+
+            }
         ]
     },
     "sc8Data": {

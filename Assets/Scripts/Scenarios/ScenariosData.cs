@@ -45,7 +45,7 @@ public class Sc6Data
     public string dropdownMenuText;
     public int attempsNb;
     public int validationNb;
-    public List<Barriers> barriers;
+    public List<BarrierRoute> barrierRoutes;
 }
 
 [System.Serializable]
@@ -104,11 +104,10 @@ public class Route
 }
 
 [System.Serializable]
-public class Barriers
+public class BarrierRoute
 {
-    public string startCoord;
-    public char startCardDir;
-    public string barriersCoord;
+    public Coordinate startCoord;
+    public List<Coordinate> barriersCoord;
 }
 
 [System.Serializable]
