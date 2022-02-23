@@ -1,0 +1,15 @@
+sessionTime,gameIsPause,sessionDistance,validationCount,attemptCount,attemptTime,attemptDistance,isGroupSession,groupID,studentIDs,scenario,selectedRoute,isSender,routeStart,selectedRouteCoord,posX,posZ,rotation,time,scene,routeIsValid,routeEndReached,routeErrorAt,routeLength,routeCoord,isOnCheckpoint,lastCheckpoint,isOnHotspot,lastHotspot
+00:00,False,0.00,0,1,00:00,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,90.00,00:16,5P,False,False,0,1,3_5,False,0,False,0
+00:01,False,0.00,0,1,00:01,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,90.00,00:17,5P,False,False,0,1,3_5,False,0,False,0
+00:02,False,0.00,0,1,00:02,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,105.00,00:18,5P,False,False,0,1,3_5,False,0,False,0
+00:03,False,0.00,0,1,00:03,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,155.00,00:19,5P,False,False,0,1,3_5,False,0,False,0
+00:03,False,0.00,0,1,00:03,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,162.00,00:20,5P,False,False,0,1,3_5,False,0,False,0
+00:05,False,0.00,0,1,00:05,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,162.00,00:21,5P,False,False,0,1,3_5,False,0,False,0
+00:05,False,0.00,0,1,00:05,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,162.00,00:22,5P,False,False,0,1,3_5,False,0,False,0
+00:07,False,0.00,0,1,00:07,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,162.00,00:23,5P,False,False,0,1,3_5,False,0,False,0
+00:08,False,0.00,0,1,00:08,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,162.00,00:24,5P,False,False,0,1,3_5,False,0,False,0
+00:09,False,0.00,0,1,00:09,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,162.00,00:25,5P,False,False,0,1,3_5,False,0,False,0
+00:10,False,0.00,0,1,00:10,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,162.00,00:26,5P,False,False,0,1,3_5,False,0,False,0
+00:11,False,0.00,0,1,00:11,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,162.00,00:27,5P,False,False,0,1,3_5,False,0,False,0
+00:12,False,0.00,0,1,00:12,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,162.00,00:28,5P,False,False,0,1,3_5,False,0,False,0
+00:12,False,0.00,0,1,00:12,0.00,False,,1,1,1,True,3_5E,,105.00,175.00,162.00,00:29,5P,False,False,0,1,3_5,False,0,False,0

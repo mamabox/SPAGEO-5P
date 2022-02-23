@@ -103,16 +103,26 @@
         "attemptsNb": 0,
         "validationNb": 0,
         "barriers": [
-            {
-                "startCoord": "5_1",
-                "startCardDir": "E",
-                "barrierCoord": "5_2S,5_3N,3_3W"
-            },
-            {
-                "startCoord": "5_4",
-                "startCardDir": "W",
-                "barrierCoord": "5_4E"
-            }
+          {
+            "startCoord": "0_4.5",
+            "startCardDir": "E",
+            "barrierCoord": "0_5S,1_5S,2_5S,3_4W,3_3W,2_3S,1_2N,0_2N"
+          },
+          {
+            "startCoord": "2_0.5",
+            "startCardDir": "E",
+            "barrierCoord": "2_0W,2_1W,2_2W,2_3W,2_3N,3_3N,4_3N,4_3E,4.2_2E,4_1E,4_0E,4_0S"
+          },
+          {
+            "startCoord": "1_3.5",
+            "startCardDir": "W",
+            "barrierCoord": "0_5S,1_5S,2_5S,3_4W,3_3W,2_3S,1_2N,0_2N"
+          },
+          {
+            "startCoord": "3_4",
+            "startCardDir": "N",
+            "barrierCoord": "7_3E,7_2E,7_1E,7_0E,7_0S,6_0S,5_0S,4_0S"
+          }
         ]
     },
     "sc8Data": {
@@ -122,12 +132,12 @@
         "instructions": {
             "start": "Ton objectif est de blah blah blah",
             "end": "Bien joué, tu as terminé.|Appui sur le bouton (B) pour revenir au menu principal",
-            "attempts": [
-                "Bien joué, tu es au bon endroit.|Appui sur le bouton (B) et continu vers le prochain checkpoint.",
-                "Ce n’est pas ça, tu peux recommencer, regarde bien les points de repères autour de toi.|Retour au dernier check point.",
-                "Ce n’est pas ça, tu peux recommencer, dessines le trajet à suivre sur ta carte.|Retour au dernier check point.",
-                "Ce n’est pas ça, voici un chemin possible."
-            ]
+          "attempts": [
+            "Bien joué, tu es au bon endroit.|Appui sur le bouton (B) et continue vers le prochain lieu.",
+            "Ce n’est pas ça, tu peux recommencer, regarde bien les points de repères autour de toi.|Retour au dernier lieu.",
+            "Ce n’est pas ça, tu peux recommencer, dessine le trajet à suivre sur ta carte.|Retour au dernier lieu.",
+            "Ce n’est pas ça, voici un chemin possible."
+          ]
         },
         "routes": [
             {
@@ -161,29 +171,29 @@
                 ]
             },
             {
-                "startCoord": {
-                    "coord": "1_1",
-                    "cardDir": "E"
+              "startCoord": {
+                "coord": "5.5_2",
+                "cardDir": "S"
+              },
+              "checkpoints": [
+                {
+                  "coord": "6.5_5",
+                  "cardDir": "N"
                 },
-                "checkpoints": [
-                    {
-                        "coord": "2_2",
-                        "cardDir": "N"
-                    },
-                    {
-                        "coord": "3_2",
-                        "cardDir": "S"
-                    },
-                    {
-                        "coord": "3_1",
-                        "cardDir": "X"
-                    }
-                ],
-                "routeSegments": [
-                    "1_1,2_1,2_2",
-                    "2_2,2_3,3_3,3_2",
-                    "3_2,3_1"
-                ]
+                {
+                  "coord": "4_3.5",
+                  "cardDir": "W"
+                },
+                {
+                  "coord": "6.5_1",
+                  "cardDir": "X"
+                }
+              ],
+              "routeSegments": [
+                "5.5_2,6_2,6_3,6_4,6_5,6.5_5",
+                "6.5_5,6_5,5_5,4_5,4_4,4_3.5",
+                "4_3.5,4_3,4_2,4_1,5_1,6_1,6.5_1"
+              ]
             }
         ]
     },
@@ -194,7 +204,7 @@
         "instructions": {
             "start": "Ton objectif est de blah blah blah",
             "end": "Bien joué, tu as terminé.|Appui sur le bouton (B) pour revenir au menu principal",
-            "attempts": [ "Tentative: ", "Tourne toi vers ", " et appuie sur le bouton (C) pour valider." ]
+            "attempts": [ "question: ", "Tourne toi vers ", " et appuie sur le bouton (C) pour valider." ]
         },
         "visorSize": 0.5,
         "propObjs": [
@@ -295,27 +305,27 @@
             }
         ],
         "randomTrialsOrder": true,
-        "trials": [
-            {
-                "position": "5.5_6",
-                "startObj": 0,
-                "targetObj": 1
-            },
-            {
-                "position": "3_6",
-                "startObj": 2,
-                "targetObj": 3
-            },
-            {
-                "position": "4_6",
-                "startObj": 1,
-                "targetObj": 7
-            },
-                        {
-                "position": "5_3",
-                "startObj": 17,
-                "targetObj": 7
-            }
-        ]
+      "trials": [
+        {
+          "position": "1_4.7",
+          "startObj": 7,
+          "targetObj": 0
+        },
+        {
+          "position": "2.1_6",
+          "startObj": 4,
+          "targetObj": 1
+        },
+        {
+          "position": "3_6",
+          "startObj": 3,
+          "targetObj": 5
+        },
+        {
+          "position": "3.1_6",
+          "startObj": 2,
+          "targetObj": 7
+        }
+      ]
     }
 }

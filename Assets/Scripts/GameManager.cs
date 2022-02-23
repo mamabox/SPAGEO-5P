@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     private LimiterManager limiterMansger;
     private Sc8Manager sc8Manager;
     private Sc9Manager sc9Manager;
+    
     //public Canvas canvas;
 
     public int blockSize = 35; //define the city's block size in meters
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
     public bool overideOnIntersectionExit; //Using when resetting route manually
 
     public ScenariosData scenariosData;
+    public GameData gameData;
     public TextData textDataFR;
 
     // Start is called before the first frame update

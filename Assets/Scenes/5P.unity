@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -552,6 +552,7 @@ GameObject:
   - component: {fileID: 96087583}
   - component: {fileID: 96087584}
   - component: {fileID: 96087585}
+  - component: {fileID: 96087586}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -616,11 +617,7 @@ MonoBehaviour:
         start: 
         end: 
         attempts: []
-      startCoord:
-        coord: 
-        cardDir: 
-      checkpoints: []
-      routeSegments: []
+      routes: []
     sc9Data:
       scenarioID: 0
       description: 
@@ -633,6 +630,8 @@ MonoBehaviour:
       propObjs: []
       randomTrialsOrder: 0
       trials: []
+  gameData:
+    lineScrollSpeed: 0
   textDataFR:
     sessionStart: 
     sessionEnd: 
@@ -890,6 +889,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b6d5e4c6b3041c280d8199a17a00b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &96087586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96087573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18e8996fa2444f82a19aa3178860de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loaded: 0
 --- !u!1001 &111019935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5323,6 +5335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkpointPrefab: {fileID: 916994846313444454, guid: f525c34b39ec247afba8ebf061b0388a,
     type: 3}
+  linesDrawn: []
 --- !u!1 &1018226988
 GameObject:
   m_ObjectHideFlags: 0

@@ -166,6 +166,9 @@ public class RouteManager : MonoBehaviour
         else
             newLineGen.GetComponent<Renderer>().material = lineMaterials[0];
 
+        //Animate the line texture
+        newLineGen.GetComponent<Renderer>().material.mainTextureOffset = new Vector2(.5f, .5f);
+
         LineRenderer lRend = newLineGen.GetComponent<LineRenderer>();
 
         List<string> lineToDraw = new List<string> (route); 
