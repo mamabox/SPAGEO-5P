@@ -23,6 +23,9 @@ public class StdScData
     public string dropdownMenuText;
     public int attempsNb;
     public int validationNb;
+    public bool receiverTransmitterOption;
+    public bool imageValidation;
+    public bool displayLines;
     public List<Route> routes;
 }
 

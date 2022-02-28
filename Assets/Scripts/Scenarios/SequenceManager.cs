@@ -26,9 +26,12 @@ public class SequenceManager : MonoBehaviour
     //private int currentValidation;
 
     //Scenarios managers
+
     private Sc6Manager sc6Manager;
+    private StdScManager stdScManager;
     private Sc8Manager sc8Manager;
     private Sc9Manager sc9Manager;
+    private int stdScIndex;
 
     //Scenario settings
     public bool attemptsLimited = false;
@@ -74,6 +77,7 @@ public class SequenceManager : MonoBehaviour
         uIManager = FindObjectOfType<GameManager>().GetComponent<UIManager>();
         limiterManager = FindObjectOfType<GameManager>().GetComponent<LimiterManager>();
         sc6Manager = GameObject.Find("ScenariosManager").GetComponent<Sc6Manager>();
+        stdScManager = GameObject.Find("ScenariosManager").GetComponent<StdScManager>();
         sc8Manager = GameObject.Find("ScenariosManager").GetComponent<Sc8Manager>();
         sc9Manager = GameObject.Find("ScenariosManager").GetComponent<Sc9Manager>();
 
@@ -138,6 +142,13 @@ public class SequenceManager : MonoBehaviour
         else if (gameManager.sessionData.selectedScenario == 7)
         {
             Scenario7();
+            stdScIndex = stdScManager.ReturnScenarioIndex(7);
+            if (stdScIndex != -1) // if there is a scenario with this ID
+            {
+                stdScManager.SetupScenario(stdScIndex);
+            }
+            else
+                Debug.Log("Sc 7's data not found in .json file");
         }
         else if (gameManager.sessionData.selectedScenario == 8)
         {

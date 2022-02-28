@@ -11,6 +11,9 @@
             "dropdownMenuText": "Miroir",
             "attemptsNb": 2,
             "validationNb": 2,
+            "receiverTransmitterOption": true,
+            "imageValidation": false,
+            "displayLines":  false,
             "routes": [
                 {
                     "startCoord": "5.5_2",
@@ -40,6 +43,9 @@
             "dropdownMenuText": "Construction de message",
             "attemptsNb": 2,
             "validationNb": 2,
+            "receiverTransmitterOption": false,
+            "imageValidation": false,
+            "displayLines": false,
             "routes": [
                 {
                     "startCoord": "5.5_2",
@@ -54,6 +60,9 @@
             "dropdownMenuText": "Utilisation de message (avec affichage)",
             "attemptsNb": 2,
             "validationNb": 1,
+            "receiverTransmitterOption": false,
+            "imageValidation": false,
+            "displayLines": false,
             "routes": [
                 {
                     "startCoord": "5.5_2",
@@ -68,6 +77,9 @@
             "dropdownMenuText": "SPAGEO City",
             "attemptsNb": 0,
             "validationNb": 0,
+            "receiverTransmitterOption": false,
+            "imageValidation": false,
+            "displayLines": false,
             "routes": [
                 {
                     "startCoord": "3_4",
@@ -87,6 +99,9 @@
             "dropdownMenuText": "Utilisation de message (sans affichage)",
             "attemptsNb": 0,
             "validationNb": 0,
+            "receiverTransmitterOption": false,
+            "imageValidation": true,
+            "displayLines": false,
             "routes": [
                 {
                     "startCoord": "5.5_2",
