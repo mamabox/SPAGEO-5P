@@ -173,13 +173,13 @@ public class IntersectionManager : MonoBehaviour
 
         if (IsCoordValid(coordStr))
         {
-            Debug.Log("Coordinate valid");
+            //Debug.Log("Coordinate valid");
             player.transform.position = new Vector3(float.Parse(coordArray[0]) * gameManager.blockSize, 1, float.Parse(coordArray[1]) * gameManager.blockSize);
         }
 
         if (IsDirValid(dir))
         {
-            Debug.Log("Direction valid");
+            //Debug.Log("Direction valid");
             switch (dir.ToUpper())
             {
                 case "N":
@@ -307,10 +307,10 @@ public class IntersectionManager : MonoBehaviour
         int index = 0;
         string lastDirectionCalculated = routeString.ElementAt(0).Last().ToString(); ; //First direction is in first item of route string
         string _cardinalDirection = "";
-        Debug.Log("First route direction = " + lastDirectionCalculated);
+        //Debug.Log("First route direction = " + lastDirectionCalculated);
         routeString.RemoveAt(0); //Remove first item in list (starting position)
         routeDir.Add(routeString.ElementAt(0) + lastDirectionCalculated);
-        Debug.Log("First route coord: " + routeString.ElementAt(0) + lastDirectionCalculated);
+       //Debug.Log("First route coord: " + routeString.ElementAt(0) + lastDirectionCalculated);
 
         foreach (var item in routeString)
         {
@@ -324,7 +324,7 @@ public class IntersectionManager : MonoBehaviour
             // check for turns
             if (lastDirectionCalculated != _cardinalDirection)
             {
-                Debug.Log("Turn information to " + routeString[index + 1] + _cardinalDirection);
+                //Debug.Log("Turn information to " + routeString[index + 1] + _cardinalDirection);
                 //ADD TO routeDir
                 if(checkQuarterTurnArguments(lastDirectionCalculated, _cardinalDirection) != "") // NOT 1/2 turn
                 {
@@ -335,7 +335,7 @@ public class IntersectionManager : MonoBehaviour
             }
             //else //reset variables
             //{
-                Debug.Log("Next direction: " + routeString[index + 1] + _cardinalDirection);
+                //Debug.Log("Next direction: " + routeString[index + 1] + _cardinalDirection);
                 routeDir.Add(routeString.ElementAt(index+1) + _cardinalDirection);
             //}
             lastDirectionCalculated = _cardinalDirection;
@@ -346,6 +346,8 @@ public class IntersectionManager : MonoBehaviour
         return routeDir;
         //Debug.Log
     }
+
+   
 
     public string calculateDirectionOnly(float[] lastIntersection, float[] thisIntersection)
     {
@@ -447,7 +449,7 @@ public class IntersectionManager : MonoBehaviour
             {
                 madeQuarterTurn = false;
             }
-            Debug.Log("Change in direction: " + lastCardinalDirection + " / " + intermediateCardinalDirection + " / " + cardinalDirection);
+          // Debug.Log("Change in direction: " + lastCardinalDirection + " / " + intermediateCardinalDirection + " / " + cardinalDirection);
         }
     }
 
@@ -466,7 +468,7 @@ public class IntersectionManager : MonoBehaviour
             {
                 intermediateDirection = currentDirection + lastDirection;
             }
-            Debug.Log("Change in direction: " + lastDirection + " / " + intermediateDirection + " / " + currentDirection);
+           // Debug.Log("Change in direction: " + lastDirection + " / " + intermediateDirection + " / " + currentDirection);
         }
         return intermediateDirection;
     }

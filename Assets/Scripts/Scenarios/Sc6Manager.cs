@@ -59,7 +59,7 @@ public class Sc6Manager : MonoBehaviour
         gameManager.sessionData.selectedRouteCoord = new List<string>(); //There is no route
         //gameManager.sessionData.selecedRouteCoordNew = new List<Coordinate>(); //TODO: for new system
         List<Coordinate> routeBarriers = _sc6Data.barrierRoutes[selectedBarriers].barriersCoord; //Creates a new list frmo teh selected limiters list
-        gameManager.sessionData.routeStart = new List<string> { _sc6Data.barrierRoutes[selectedBarriers].startCoord.coord, _sc6Data.barrierRoutes[selectedBarriers].startCoord.cardDir };
+        gameManager.sessionData.routeStart = new List<string> { _sc6Data.barrierRoutes[selectedBarriers].startCoord.coord, _sc6Data.barrierRoutes[selectedBarriers].startCoord.cardDir }; // routeStart (coord, dir)
         //gameManager.sessionData.routeStartNew =_sc6Data.barrierRoutes[selectedBarriers].startCoord;
         limiterManager.allBarriers = _sc6Data.barrierRoutes[selectedBarriers].barriersCoord;
         limiterManager.GenerateBarriers(routeBarriers);

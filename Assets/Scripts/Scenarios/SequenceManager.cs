@@ -98,13 +98,15 @@ public class SequenceManager : MonoBehaviour
         scenario4Data = ImportScenarioStdData(scenario4TextFile, 2);    //Scenario 4
         scenario5Data = ImportScenarioStdData(scenario5TextFile, 2);    // Scenario 5
         scenario6Data = ImportScenario6Data(scenario6TextFile, 2);    // Scenario 6
-        scenario7Data = ImportScenarioStdData(scenario7TextFile, 2);    // Scenario 7
+        //scenario7Data = ImportScenarioStdData(scenario7TextFile, 2);    // Scenario 7
+        //scenario7Data = ImportScenarioStdDataJson(7);
     }
 
     void Start()
     {
-        Debug.Log("SCENARIO: " + gameManager.sessionData.selectedScenario + " - ROUTE: " + (gameManager.sessionData.selectedRoute + 1));
-        Debug.Log("ROUTE COORD: " + string.Join(",", gameManager.sessionData.selectedRoute));
+        scenario7Data = ImportScenarioStdDataJson(7);
+
+        Debug.Log("USER SELECTION: SC" + gameManager.sessionData.selectedScenario + " RT" + (gameManager.sessionData.selectedRoute + 1));
 //        Debug.Log("Has already validated by image: " + sessionData.hasDoneValidationByImage);
         //1. SETUP THE SEQUENCE
         if (gameManager.sessionData.selectedScenario == 1)
@@ -142,6 +144,7 @@ public class SequenceManager : MonoBehaviour
         else if (gameManager.sessionData.selectedScenario == 7)
         {
             Scenario7();
+            /* 
             stdScIndex = stdScManager.ReturnScenarioIndex(7);
             if (stdScIndex != -1) // if there is a scenario with this ID
             {
@@ -149,6 +152,7 @@ public class SequenceManager : MonoBehaviour
             }
             else
                 Debug.Log("Sc 7's data not found in .json file");
+            */
         }
         else if (gameManager.sessionData.selectedScenario == 8)
         {
@@ -343,9 +347,10 @@ public class SequenceManager : MonoBehaviour
         scenario1Props.SetActive(false);
         activeScenario = scenario7Data; //Sets as active scenario
         gameManager.sessionData.selectedRouteCoord = scenario7Data.routes.ElementAt(gameManager.sessionData.selectedRoute).Split(',').ToList(); //Sets the route selected in menu as the session's route
+        Debug.Log("ROUTE COORD: " + string.Join(",", gameManager.sessionData.selectedRouteCoord));
         gameManager.sessionData.routeStart = routeManager.getRouteStart(gameManager.sessionData.selectedRouteCoord);   //sets at what position the player should start
         gameManager.sessionData.selectedRouteDir = intersectionManager.ConvertRouteToDirection(gameManager.sessionData.selectedRouteCoord);
-        Debug.Log(string.Join(",", gameManager.sessionData.selectedRouteDir));
+//        Debug.Log(string.Join(",", gameManager.sessionData.selectedRouteDir));
 
         SetAttemptsValidationLimits();
         //gameManager.attemptCount = 0;
@@ -448,6 +453,28 @@ public class SequenceManager : MonoBehaviour
         return scenarioData;
     }
 
+    //PULLS DATA FROM LIST<STRING> AND STORES IT IN STRUCTURE (SCENARIOS 2 TO 5)
+    public ScenarioStdData ImportScenarioStdDataJson(int scenarioID)
+    {
+        int scIndex = stdScManager.ReturnScenarioIndex(scenarioID); // returns the index of the scenario
+        StdScData _scenarioData = gameManager.scenariosData.stdScData[scIndex];
+
+        ScenarioStdData scenarioData = new ScenarioStdData();
+        scenarioData.routes = new List<string>();
+
+        scenarioData.maxAttempts = _scenarioData.attempsNb;
+        scenarioData.maxValidations = _scenarioData.validationNb;
+        scenarioData.routesCount = _scenarioData.routes.Count();   //# of routes in scenario
+        for (int x = 0; x < scenarioData.routesCount; x++)   // List of all routes
+        {
+            string manualList = _scenarioData.routes[x].startCoord.coord + _scenarioData.routes[x].startCoord.cardDir + "," + _scenarioData.routes[x].routeCoord;
+            Debug.Log("SC"+ scenarioID + " RT"+ x + " ="+ manualList);
+            scenarioData.routes.Add(manualList);
+        }
+
+        return scenarioData;
+    }
+
     private void SetAttemptsValidationLimits()
     {
         // Set attempts limit
@@ -471,6 +498,7 @@ public class SequenceManager : MonoBehaviour
         }
 //        Debug.Log("Attempts limited: " + attemptsLimited + ". Validations limited: " + validationsLimited);
     }
+
 
     //IMPORT TEXT FROM .TXT FILE PER LINE AND REMOVES COMMENTS BEFORE '*' SEPARATOR
     private List<string> ImportText(string fileName)

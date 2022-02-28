@@ -13,13 +13,17 @@ public class ScenariosDataImport: MonoBehaviour
     private ScenariosData tempScenariosData = new ScenariosData();
     private int nonStdScNb;
 
+    private SequenceManager scenarioManager;
+
     //public ScenariosData scenariosData;
 
 
     void Awake()
     {
         //Initialisation
+
         gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        scenarioManager = gameManager.GetComponent<SequenceManager>();
         importPath = Path.Combine(Directory.GetCurrentDirectory(), "Assets/Media/Text/");
         scenarioDataFile = importPath + "scenariosData.json";
         nonStdScNb = 4; //Number of non standard scenarios: Sc1,Sc6, Sc8, Sc9
@@ -49,7 +53,10 @@ public class ScenariosDataImport: MonoBehaviour
         {
             Debug.Log(scenarioDataFile + " does not exist");
         }
+
+        //scenarioManager.scenario7Data = scenarioManager.ImportScenarioStdDataJson(7);
     }
+
 
     private void BuilDropdownMenuItems()
     {
