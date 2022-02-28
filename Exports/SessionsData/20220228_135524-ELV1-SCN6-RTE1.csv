@@ -1,0 +1,16 @@
+sessionTime,gameIsPause,sessionDistance,validationCount,attemptCount,attemptTime,attemptDistance,isGroupSession,groupID,studentIDs,scenario,selectedRoute,isSender,routeStart,selectedRouteCoord,posX,posZ,rotation,time,scene,routeIsValid,routeEndReached,routeErrorAt,routeLength,routeCoord,isOnCheckpoint,lastCheckpoint,isOnHotspot,lastHotspot
+00:00,False,0.00,0,1,00:00,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,90.00,00:54,5P,False,False,0,0,,False,0,False,0
+00:00,False,0.00,0,1,00:00,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,64.07,00:55,5P,False,False,0,0,,False,0,False,0
+00:02,False,0.00,0,1,00:02,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,15.07,00:56,5P,False,False,0,0,,False,0,False,0
+00:03,False,0.00,0,1,00:03,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,3.07,00:57,5P,False,False,0,0,,False,0,False,0
+00:04,False,0.00,0,1,00:04,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,345.82,00:58,5P,False,False,0,0,,False,0,False,0
+00:05,False,0.00,0,1,00:05,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,359.25,00:59,5P,False,False,0,0,,False,0,False,0
+00:06,False,0.00,0,1,00:06,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,3.49,01:00,5P,False,False,0,0,,False,0,False,0
+00:07,False,0.00,0,1,00:07,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,3.49,01:01,5P,False,False,0,0,,False,0,False,0
+00:08,False,0.00,0,1,00:08,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,3.49,01:02,5P,False,False,0,0,,False,0,False,0
+00:09,False,0.00,0,1,00:09,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,3.49,01:03,5P,False,False,0,0,,False,0,False,0
+00:10,False,0.00,0,1,00:10,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,3.49,01:04,5P,False,False,0,0,,False,0,False,0
+00:11,False,0.00,0,1,00:11,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,3.49,01:05,5P,False,False,0,0,,False,0,False,0
+00:12,False,0.00,0,1,00:12,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,3.49,01:06,5P,False,False,0,0,,False,0,False,0
+00:13,False,0.00,0,1,00:13,0.00,False,,1,6,1,True,0_4.5E,,0.00,157.50,3.49,01:07,5P,False,False,0,0,,False,0,False,0
+00:14,False,0.00,0,1,00:14,0.00,False,,1,6,1,True,0_4.5E,,0.0
