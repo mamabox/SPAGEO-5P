@@ -26,6 +26,7 @@ public class SequenceManager : MonoBehaviour
     //private int currentValidation;
 
     //Scenarios managers
+    private Sc6Manager sc6Manager;
     private Sc8Manager sc8Manager;
     private Sc9Manager sc9Manager;
 
@@ -72,6 +73,7 @@ public class SequenceManager : MonoBehaviour
         hotspotManager = FindObjectOfType<GameManager>().GetComponent<HotspotManager>();
         uIManager = FindObjectOfType<GameManager>().GetComponent<UIManager>();
         limiterManager = FindObjectOfType<GameManager>().GetComponent<LimiterManager>();
+        sc6Manager = GameObject.Find("ScenariosManager").GetComponent<Sc6Manager>();
         sc8Manager = GameObject.Find("ScenariosManager").GetComponent<Sc8Manager>();
         sc9Manager = GameObject.Find("ScenariosManager").GetComponent<Sc9Manager>();
 
@@ -130,8 +132,8 @@ public class SequenceManager : MonoBehaviour
         }
         else if (gameManager.sessionData.selectedScenario == 6)
         {
-            Scenario6();
-            //sc6Manager.SetupScenario();
+            //Scenario6();
+            sc6Manager.SetupScenario();
         }
         else if (gameManager.sessionData.selectedScenario == 7)
         {

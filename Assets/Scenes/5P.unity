@@ -608,7 +608,7 @@ MonoBehaviour:
       dropdownMenuText: 
       attempsNb: 0
       validationNb: 0
-      barriers: []
+      barrierRoutes: []
     sc8Data:
       scenarioID: 0
       description: 
@@ -877,6 +877,7 @@ MonoBehaviour:
   limiterPrefab: {fileID: 5792823829888893852, guid: eef0d4961e10145ad83154c49212cbb0,
     type: 3}
   allLimiters: []
+  allBarriers: []
 --- !u!114 &96087585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,7 +902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18e8996fa2444f82a19aa3178860de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loaded: 0
 --- !u!1001 &111019935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5264,8 +5264,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1016178828}
-  - component: {fileID: 1016178827}
+  - component: {fileID: 1016178830}
   - component: {fileID: 1016178829}
+  - component: {fileID: 1016178827}
   m_Layer: 0
   m_Name: ScenariosManager
   m_TagString: Untagged
@@ -5282,7 +5283,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1016178826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6983f1cd3cbfa4cf5bccbc7e833a728f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1196e85cd4f1e40acbe0e8b64db83a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   visor: {fileID: 1080700648}
@@ -5336,6 +5337,18 @@ MonoBehaviour:
   checkpointPrefab: {fileID: 916994846313444454, guid: f525c34b39ec247afba8ebf061b0388a,
     type: 3}
   linesDrawn: []
+--- !u!114 &1016178830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016178826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bbba07350df42fa9f5b6cbb7ffc356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1018226988
 GameObject:
   m_ObjectHideFlags: 0

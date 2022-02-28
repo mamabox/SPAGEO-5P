@@ -21,6 +21,7 @@ public class LimiterManager : MonoBehaviour
 
     public GameObject limiterPrefab;
     public List<string> allLimiters;
+    public List<Coordinate> allBarriers;
 
     void Awake()
     {
@@ -60,6 +61,24 @@ public class LimiterManager : MonoBehaviour
         }
     }
 
+    // GenerateBarriers replaces GenerateLimiters by using a list of Coordinates instead of a list of strings
+    public void GenerateBarriers(List<Coordinate> barriers)
+    {
+        string[] coordArray;
+
+        for (int i = 0; i < barriers.Count(); i++)
+        {
+            coordArray = barriers[i].coord.Split(char.Parse(routeManager.xyCoordSeparator)); //stores the coordinates x and y in an array
+            var newCheckpoint = Instantiate(limiterPrefab, new Vector3(float.Parse(coordArray[0]) * gameManager.blockSize, 0.02f, float.Parse(coordArray[1]) * gameManager.blockSize) + transformOffsetStr(barriers[i].cardDir), Quaternion.Euler(0, rotationOffsetStr(barriers[i].cardDir), 0));
+
+            //Quaternion.Euler(0, rotationOffset(coordDir, 0); // Sets camera to player's rotation + offset
+
+            newCheckpoint.GetComponent<Limiter>().coordString = barriers[i].coord;  //store the coordinates as a string in the instance
+            newCheckpoint.GetComponent<Limiter>().ID = i + 1;    //stores the checkpoint ID(int) in the instance
+        }
+
+    }
+
     //calculate offset based on cardinal direction;
     private Vector3 transformOffset(char dir)
     {
@@ -84,6 +103,28 @@ public class LimiterManager : MonoBehaviour
         return transformOffset;
     }
 
+    private Vector3 transformOffsetStr(string dir)
+    {
+        Vector3 transformOffset = new Vector3();
+
+        switch (dir)
+        {
+            case "N":
+                transformOffset = new Vector3(0, 0, 5);
+                break;
+            case "S":
+                transformOffset = new Vector3(0, 0, -5);
+                break;
+            case "W":
+                transformOffset = new Vector3(-5, 0, 0);
+                break;
+            case "E":
+                transformOffset = new Vector3(5, 0, 0);
+                break;
+        }
+        return transformOffset;
+    }
+
     //calculate offset based on cardinal direction;
     private int rotationOffset(char dir)
     {
@@ -101,6 +142,30 @@ public class LimiterManager : MonoBehaviour
                 rotationOffset = 90;
                 break;
             case 'E':
+                rotationOffset = -90;
+                break;
+
+        }
+        return rotationOffset;
+    }
+
+    //calculate offset based on cardinal direction;
+    private int rotationOffsetStr(string dir)
+    {
+        int rotationOffset = 0;
+
+        switch (dir)
+        {
+            case "N":
+                rotationOffset = 180;
+                break;
+            case "S":
+                rotationOffset = 0;
+                break;
+            case "W":
+                rotationOffset = 90;
+                break;
+            case "E":
                 rotationOffset = -90;
                 break;
 

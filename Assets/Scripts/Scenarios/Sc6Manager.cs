@@ -22,6 +22,7 @@ public class Sc6Manager : MonoBehaviour
     private CheckpointManager checkpointManager;
     private RouteManager routeManager;
     private IntersectionManager intersectionManager;
+    private LimiterManager limiterManager;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class Sc6Manager : MonoBehaviour
         checkpointManager = gameManager.GetComponent<CheckpointManager>();
         routeManager = gameManager.GetComponent<RouteManager>();
         intersectionManager = gameManager.GetComponent<IntersectionManager>();
+        limiterManager = FindObjectOfType<GameManager>().GetComponent<LimiterManager>();
     }
     // Start is called before the first frame update
     void Start()
@@ -55,8 +57,12 @@ public class Sc6Manager : MonoBehaviour
         routeManager.validationEnabled = false; //No validation possible
 
         gameManager.sessionData.selectedRouteCoord = new List<string>(); //There is no route
-        List<string> thisLimiter = _sc6Data.barriers[selectedBarriers].barriersCoord.Split(',').ToList(); //Creates a new list frmo teh selected limiters list
-        gameManager.sessionData.routeStart = new List<string> { _sc6Data.barriers[selectedBarriers].startCoord.coord, _sc6Data.barriers[selectedBarriers].startCoord.cardDir };
+        //gameManager.sessionData.selecedRouteCoordNew = new List<Coordinate>(); //TODO: for new system
+        List<Coordinate> routeBarriers = _sc6Data.barrierRoutes[selectedBarriers].barriersCoord; //Creates a new list frmo teh selected limiters list
+        gameManager.sessionData.routeStart = new List<string> { _sc6Data.barrierRoutes[selectedBarriers].startCoord.coord, _sc6Data.barrierRoutes[selectedBarriers].startCoord.cardDir };
+        //gameManager.sessionData.routeStartNew =_sc6Data.barrierRoutes[selectedBarriers].startCoord;
+        limiterManager.allBarriers = _sc6Data.barrierRoutes[selectedBarriers].barriersCoord;
+        limiterManager.GenerateBarriers(routeBarriers);
     }
 
     public void StartScenario()

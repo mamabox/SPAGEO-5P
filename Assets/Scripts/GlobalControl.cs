@@ -54,7 +54,9 @@ public class GlobalControl : MonoBehaviour
         public int selectedScenario;
         public int selectedRoute;
         public List<string> selectedRouteCoord;
+        public List<Coordinate> selecedRouteCoordNew;
         public List<string> routeStart;
+        public Coordinate routeStartNew;
         public bool isSender;
         public bool validationDone;
         public bool sessionPaused;
