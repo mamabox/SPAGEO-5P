@@ -101,9 +101,11 @@ public class PropObj
 [System.Serializable]
 public class Route
 {
-    public string startCoord;
-    public string startCardDir;
+    //public string startCoord;
+    //public string startCardDir;
+    public Coordinate startCoord;
     public string routeCoord;
+    
 }
 
 [System.Serializable]
