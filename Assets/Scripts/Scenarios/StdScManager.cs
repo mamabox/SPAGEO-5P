@@ -74,10 +74,10 @@ public class StdScManager : MonoBehaviour
     //TODO: remove referencea to actiescenario since only maxAttempts and maxValidations are used
     public void SetAttemptsAndValidationLimitsNew()
     {
-        scenarioManager.activeScenario.maxAttempts = _scenarioData.attempsNb;
+        scenarioManager.activeScenario.maxAttempts = _scenarioData.attemptsNb;
         scenarioManager.activeScenario.maxValidations = _scenarioData.validationNb;
 
-        if (_scenarioData.attempsNb == 0)
+        if (_scenarioData.attemptsNb == 0)
             scenarioManager.attemptsLimited = false;
         else
             scenarioManager.attemptsLimited = true;
@@ -87,7 +87,7 @@ public class StdScManager : MonoBehaviour
         else
             scenarioManager.validationsLimited = true;
 
-        Debug.Log("Scenario has " + _scenarioData.attempsNb + "nb of attempts and " + _scenarioData.validationNb + "  nb of validations "); 
+        Debug.Log("Scenario has " + _scenarioData.attemptsNb + "nb of attempts and " + _scenarioData.validationNb + "  nb of validations "); 
     }
 
     public void StartScenario(int scenarioID)

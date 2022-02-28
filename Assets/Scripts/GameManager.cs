@@ -420,7 +420,7 @@ saveSessionData.StartSavingData();  //Start saving game session data
     // Handles the validaton for the different scenarios
     public void CheckValidation()
     {
-        Debug.Log("validation: " + sessionData.validationCountNew + " /" + sequenceManager.activeScenario.maxValidations);
+        //Debug.Log("validation: " + sessionData.validationCountNew + " /" + sequenceManager.activeScenario.maxValidations);
         if (!routeManager.validationEnabled)//CANNOT validate
         {
             uiManager.OpenDialogBox("Pas de validation possible.");
@@ -502,10 +502,21 @@ saveSessionData.StartSavingData();  //Start saving game session data
                 uiManager.routeValidationText.text = ("Valid = " + routeManager.validationInfo.isValid + " - errorat #: " + routeManager.validationInfo.errorAt + " - endReached= " + routeManager.validationInfo.endReached + " - length: " + routeManager.validationInfo.routeLength); //UI Display only
                 //saveSessionData.SaveData();
                 PauseSession();
+
+                if (sessionData.validationCountNew == sequenceManager.activeScenario.maxValidations) //if last validation allowed, end session
+                {
+                    GlobalControl.instance.returnToMenu = true;
+                    endTime = Time.time;
+                    sessionEnded = true;
+                    sessionData.sessionPaused = false;
+                }
+
                 GlobalControl.instance.sessionData = sessionData;
                 uiManager.OpenDialogBox("VALIDATION PAR IMAGES");
                 saveSessionData.stopSavingData();
                 uiManager.dialogBox.GetComponent<DialogBox>().validateScene = true;  //return to menu after closing the dialog box
+
+
             }
             else if (sessionData.selectedScenario == 5)  //Scenario 5 (no validation)
             {

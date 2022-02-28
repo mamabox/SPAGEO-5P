@@ -35,7 +35,7 @@ public class ValidationMenu : MonoBehaviour
             sessionSummary.text = "Élève(s): " + string.Join(",", GlobalControl.instance.sessionData.studentIDs);
         }
 
-
+        if (sessionRouteImgSeq.GetComponent<ImageSequence>().routeList != null)
             sessionImgSeqText.text = "Session IMGs: " + String.Join("_", sessionRouteImgSeq.GetComponent<ImageSequence>().routeList);
 
 

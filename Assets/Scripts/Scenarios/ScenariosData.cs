@@ -21,7 +21,7 @@ public class StdScData
     public int scenarioID;
     public string description;
     public string dropdownMenuText;
-    public int attempsNb;
+    public int attemptsNb;
     public int validationNb;
     public bool receiverTransmitterOption;
     public bool imageValidation;
@@ -46,7 +46,7 @@ public class Sc6Data
     public int scenarioID;
     public string description;
     public string dropdownMenuText;
-    public int attempsNb;
+    public int attemptsNb;
     public int validationNb;
     public List<BarrierRoute> barrierRoutes;
 }

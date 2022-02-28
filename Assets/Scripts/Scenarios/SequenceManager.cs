@@ -353,7 +353,10 @@ public class SequenceManager : MonoBehaviour
 //        Debug.Log(string.Join(",", gameManager.sessionData.selectedRouteDir));
 
         SetAttemptsValidationLimits();
-        //gameManager.attemptCount = 0;
+        routeManager.validationEnabled = true;
+        gameManager.attemptsAllowed = true;
+        /*
+         //gameManager.attemptCount = 0;
 
         if (!gameManager.sessionData.sessionPaused)
         {
@@ -368,6 +371,7 @@ public class SequenceManager : MonoBehaviour
             gameManager.attemptsAllowed = false;
             //attemptsLimited = false;
         }
+        */
     }
 
     //SCENARIO 9 - TACHE DE POINTAGE
@@ -462,8 +466,10 @@ public class SequenceManager : MonoBehaviour
         ScenarioStdData scenarioData = new ScenarioStdData();
         scenarioData.routes = new List<string>();
 
-        scenarioData.maxAttempts = _scenarioData.attempsNb;
+        scenarioData.maxAttempts = _scenarioData.attemptsNb;
         scenarioData.maxValidations = _scenarioData.validationNb;
+        Debug.Log("attempsNb: " + _scenarioData.attemptsNb + " validationNb: " + _scenarioData.validationNb);
+        Debug.Log("MaxAttempts: " + scenarioData.maxAttempts + " MaxValidations: " + scenarioData.maxValidations);
         scenarioData.routesCount = _scenarioData.routes.Count();   //# of routes in scenario
         for (int x = 0; x < scenarioData.routesCount; x++)   // List of all routes
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using System.Linq;
 
 
 public class ImageSequence : MonoBehaviour
@@ -30,18 +31,23 @@ public class ImageSequence : MonoBehaviour
         imgSpacing = 80;
         offset = 640;
         currentScrollPos = 0;
+        maxScrollPos = 0;
 
-        //routeListNew = new List<string> { "2_4W", "2_4NW", "2_4N", "2_5N", "2_6N" };
-    }
+        //List<string> routeList = new List<string>() ;
+
+    //routeListNew = new List<string> { "2_4W", "2_4NW", "2_4N", "2_5N", "2_6N" };
+}
 
     // Start is called before the first frame update
     void Start()
     {
-        maxScrollPos = routeList.Count - 3;
-        //selectedRouteImgSeq
-        for (int i = 0; i < routeList.Count; i++)
+        if (routeList != null)
         {
-            instantiateImages(i, imagesSequence, routeList);
+            maxScrollPos = routeList.Count - 3;
+            for (int i = 0; i < routeList.Count; i++)
+            {
+                instantiateImages(i, imagesSequence, routeList);
+            }
         }
 
     }
