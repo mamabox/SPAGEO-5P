@@ -172,10 +172,10 @@
                 },
                 {
                     "startCoord": {
-                        "coord": "2_4",
+                        "coord": "9_3",
                         "cardDir": "S"
                     },
-                    "routeCoord": "2_4,3_4,3_5"
+                    "routeCoord": "9_3,8_3"
                 }
             ]
         },
