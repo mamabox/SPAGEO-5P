@@ -58,7 +58,7 @@ public class SaveSessionData : MonoBehaviour
 
     public void StartSavingData()
     {
-        if (gameManager.sessionData.selectedRouteCoord.Any())
+        if (gameManager.sessionData.selectedRouteCoord.Any()) //if selectedRouteCoord is empty
         {
             routeCoord = new List<string>(gameManager.sessionData.selectedRouteCoord);
             if (routeCoord.Count >= 2)

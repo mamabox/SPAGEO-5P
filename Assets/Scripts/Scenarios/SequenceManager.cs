@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.IO;
+using System;
 
 public class SequenceManager : MonoBehaviour
 {
@@ -96,7 +97,7 @@ public class SequenceManager : MonoBehaviour
         scenario2Data = ImportScenarioStdData(scenario2TextFile, 2);    //Scenario 2
         scenario3Data = ImportScenarioStdData(scenario3TextFile, 2);    //Scenario 3
         scenario4Data = ImportScenarioStdData(scenario4TextFile, 2);    //Scenario 4
-        scenario5Data = ImportScenarioStdData(scenario5TextFile, 2);    // Scenario 5
+        //scenario5Data = ImportScenarioStdData(scenario5TextFile, 2);    // Scenario 5
         scenario6Data = ImportScenario6Data(scenario6TextFile, 2);    // Scenario 6
         //scenario7Data = ImportScenarioStdData(scenario7TextFile, 2);    // Scenario 7
         //scenario7Data = ImportScenarioStdDataJson(7);
@@ -104,6 +105,7 @@ public class SequenceManager : MonoBehaviour
 
     void Start()
     {
+        scenario5Data = ImportScenarioStdDataJson(5);
         scenario7Data = ImportScenarioStdDataJson(7);
 
         Debug.Log("USER SELECTION: SC" + gameManager.sessionData.selectedScenario + " RT" + (gameManager.sessionData.selectedRoute + 1));
@@ -461,6 +463,7 @@ public class SequenceManager : MonoBehaviour
     public ScenarioStdData ImportScenarioStdDataJson(int scenarioID)
     {
         int scIndex = stdScManager.ReturnScenarioIndex(scenarioID); // returns the index of the scenario
+        string manualList;
         StdScData _scenarioData = gameManager.scenariosData.stdScData[scIndex];
 
         ScenarioStdData scenarioData = new ScenarioStdData();
@@ -473,7 +476,16 @@ public class SequenceManager : MonoBehaviour
         scenarioData.routesCount = _scenarioData.routes.Count();   //# of routes in scenario
         for (int x = 0; x < scenarioData.routesCount; x++)   // List of all routes
         {
-            string manualList = _scenarioData.routes[x].startCoord.coord + _scenarioData.routes[x].startCoord.cardDir + "," + _scenarioData.routes[x].routeCoord;
+            if (_scenarioData.routes[x].routeCoord != string.Empty) // if routeCoord is not empty
+            {                                                  
+                manualList = _scenarioData.routes[x].startCoord.coord + _scenarioData.routes[x].startCoord.cardDir + "," + _scenarioData.routes[x].routeCoord;
+            }
+            else //if routeCoord is not empty
+            {
+                manualList = _scenarioData.routes[x].startCoord.coord + _scenarioData.routes[x].startCoord.cardDir;
+            }
+
+
             Debug.Log("SC"+ scenarioID + " RT"+ x + " ="+ manualList);
             scenarioData.routes.Add(manualList);
         }

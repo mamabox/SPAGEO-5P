@@ -24,6 +24,8 @@ public class Sc6Manager : MonoBehaviour
     private IntersectionManager intersectionManager;
     private LimiterManager limiterManager;
 
+    int barriersIndex;
+
     private void Awake()
     {
         //Game objects and classes
@@ -36,6 +38,8 @@ public class Sc6Manager : MonoBehaviour
         routeManager = gameManager.GetComponent<RouteManager>();
         intersectionManager = gameManager.GetComponent<IntersectionManager>();
         limiterManager = FindObjectOfType<GameManager>().GetComponent<LimiterManager>();
+
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -51,23 +55,38 @@ public class Sc6Manager : MonoBehaviour
 
     public void SetupScenario()
     {
-        int selectedBarriers = gameManager.sessionData.selectedRoute;
+        barriersIndex = gameManager.sessionData.selectedRoute;
 
         scenarioManager.scenario1Props.SetActive(false);
         routeManager.validationEnabled = false; //No validation possible
 
         gameManager.sessionData.selectedRouteCoord = new List<string>(); //There is no route
         //gameManager.sessionData.selecedRouteCoordNew = new List<Coordinate>(); //TODO: for new system
-        List<Coordinate> routeBarriers = _sc6Data.barrierRoutes[selectedBarriers].barriersCoord; //Creates a new list frmo teh selected limiters list
-        gameManager.sessionData.routeStart = new List<string> { _sc6Data.barrierRoutes[selectedBarriers].startCoord.coord, _sc6Data.barrierRoutes[selectedBarriers].startCoord.cardDir }; // routeStart (coord, dir)
+        List<Coordinate> routeBarriers = _sc6Data.barrierRoutes[barriersIndex].barriersCoord; //Creates a new list frmo teh selected limiters list
+        gameManager.sessionData.routeStart = new List<string> { _sc6Data.barrierRoutes[barriersIndex].startCoord.coord, _sc6Data.barrierRoutes[barriersIndex].startCoord.cardDir }; // routeStart (coord, dir)
         //gameManager.sessionData.routeStartNew =_sc6Data.barrierRoutes[selectedBarriers].startCoord;
-        limiterManager.allBarriers = _sc6Data.barrierRoutes[selectedBarriers].barriersCoord;
+        limiterManager.allBarriers = _sc6Data.barrierRoutes[barriersIndex].barriersCoord;
         limiterManager.GenerateBarriers(routeBarriers);
+        SaveDataConfig();
     }
 
     public void StartScenario()
     {
         //StartSavingData();
+    }
+
+    private void SaveDataConfig()
+    {
+        string _barrierCoord;
+
+        List<string> barriersCoordStr = new List<string>();
+        for (int x = 0; x < _sc6Data.barrierRoutes[barriersIndex].barriersCoord.Count(); x++) // for each barrier coordinate
+        {
+            _barrierCoord = _sc6Data.barrierRoutes[barriersIndex].barriersCoord[x].coord + _sc6Data.barrierRoutes[barriersIndex].barriersCoord[x].cardDir;
+            barriersCoordStr.Add(_barrierCoord);
+        }
+        gameManager.sessionData.selectedRouteCoord = barriersCoordStr;
+        Debug.Log("barriersCoordStr =" + string.Join((","), barriersCoordStr));
     }
 
         public void EndScenario()
