@@ -947,13 +947,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 324927288}
   m_TextComponent: {fileID: 1365206584}
   m_Placeholder: {fileID: 892011753}
-  m_ContentType: 2
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 4
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 1
+  m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -1715,13 +1715,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 601459381}
   m_TextComponent: {fileID: 1344151226}
   m_Placeholder: {fileID: 183526943}
-  m_ContentType: 2
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 4
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 1
+  m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -2637,13 +2637,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 736382538}
   m_TextComponent: {fileID: 2142281295}
   m_Placeholder: {fileID: 697039279}
-  m_ContentType: 2
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 4
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 1
+  m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -3331,13 +3331,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 915900288}
   m_TextComponent: {fileID: 1116413910}
   m_Placeholder: {fileID: 1167798287}
-  m_ContentType: 2
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 4
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 1
+  m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -4252,13 +4252,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1142187805}
   m_TextComponent: {fileID: 794830883}
   m_Placeholder: {fileID: 550841274}
-  m_ContentType: 2
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 4
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 1
+  m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
